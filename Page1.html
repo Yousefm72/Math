@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العمليات الأساسية - Basic Operations | تعلم الرياضيات مع يوسف</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .lesson-content {
+            padding: 2rem;
+            background-color: var(--bg-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .operation-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background-color: var(--bg-light);
+        }
+        
+        .operation-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .operation-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .example-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .example-problem {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .example-solution {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .practice-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .practice-problem {
+            font-size: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .practice-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.25rem;
+            text-align: center;
+            margin: 1rem 0;
+            direction: ltr;
+        }
+        
+        .practice-result {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .practice-result.correct {
+            background-color: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22c55e;
+        }
+        
+        .practice-result.incorrect {
+            background-color: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .back-button:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        
+        .key-points {
+            background-color: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .key-points h3 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+        
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #d97706;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="index.html#lessons">الدروس</a></li>
+                <li><a href="index.html#exercises">التمارين</a></li>
+                <li><a href="index.html#calculator">الحاسبة</a></li>
+                <li><a href="index.html#about">حول الموقع</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 120px;">
+        <div class="container">
+            <!-- Back Button -->
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-right"></i>
+                العودة للصفحة الرئيسية
+            </a>
+
+            <!-- Page Title -->
+            <div class="lesson-content">
+                <h1>العمليات الأساسية في الرياضيات</h1>
+                <p>في هذا الدرس سنتعلم العمليات الحسابية الأساسية: الجمع، الطرح، الضرب، والقسمة. هذه العمليات هي أساس الرياضيات وستحتاجها في حياتك اليومية.</p>
+            </div>
+
+            <!-- Addition Section -->
+            <div class="operation-section">
+                <div class="operation-title">
+                    <div class="operation-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <h2>الجمع (Addition)</h2>
+                </div>
+                <p>الجمع هو عملية إضافة عددين أو أكثر للحصول على المجموع الكلي.</p>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-problem">5 + 3 = 8</div>
+                        <div class="example-solution">خمسة زائد ثلاثة يساوي ثمانية</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">12 + 8 = 20</div>
+                        <div class="example-solution">اثنا عشر زائد ثمانية يساوي عشرين</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">25 + 15 = 40</div>
+                        <div class="example-solution">خمسة وعشرون زائد خمسة عشر يساوي أربعين</div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>نقاط مهمة في الجمع:</h3>
+                    <ul>
+                        <li>الجمع عملية تبادلية: 5 + 3 = 3 + 5</li>
+                        <li>الجمع مع الصفر: أي عدد + 0 = نفس العدد</li>
+                        <li>الجمع مع الواحد: أي عدد + 1 = العدد التالي</li>
+                        <li>يمكن جمع أكثر من عددين: 2 + 3 + 4 = 9</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Subtraction Section -->
+            <div class="operation-section">
+                <div class="operation-title">
+                    <div class="operation-icon">
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <h2>الطرح (Subtraction)</h2>
+                </div>
+                <p>الطرح هو عملية أخذ عدد من عدد آخر للحصول على الفرق.</p>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-problem">8 - 3 = 5</div>
+                        <div class="example-solution">ثمانية ناقص ثلاثة يساوي خمسة</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">15 - 7 = 8</div>
+                        <div class="example-solution">خمسة عشر ناقص سبعة يساوي ثمانية</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">20 - 12 = 8</div>
+                        <div class="example-solution">عشرون ناقص اثنا عشر يساوي ثمانية</div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>نقاط مهمة في الطرح:</h3>
+                    <ul>
+                        <li>الطرح ليس عملية تبادلية: 8 - 3 ≠ 3 - 8</li>
+                        <li>الطرح من الصفر: 0 - أي عدد = سالب العدد</li>
+                        <li>الطرح من نفس العدد: أي عدد - نفس العدد = 0</li>
+                        <li>الطرح من عدد أكبر: يجب أن يكون العدد الأول أكبر</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Multiplication Section -->
+            <div class="operation-section">
+                <div class="operation-title">
+                    <div class="operation-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <h2>الضرب (Multiplication)</h2>
+                </div>
+                <p>الضرب هو عملية جمع متكرر لنفس العدد عدة مرات.</p>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-problem">4 × 3 = 12</div>
+                        <div class="example-solution">أربعة في ثلاثة يساوي اثني عشر</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">6 × 5 = 30</div>
+                        <div class="example-solution">ستة في خمسة يساوي ثلاثين</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">8 × 7 = 56</div>
+                        <div class="example-solution">ثمانية في سبعة يساوي ستة وخمسين</div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>نقاط مهمة في الضرب:</h3>
+                    <ul>
+                        <li>الضرب عملية تبادلية: 4 × 3 = 3 × 4</li>
+                        <li>الضرب في الصفر: أي عدد × 0 = 0</li>
+                        <li>الضرب في الواحد: أي عدد × 1 = نفس العدد</li>
+                        <li>الضرب في العشرة: أضف صفر في النهاية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Division Section -->
+            <div class="operation-section">
+                <div class="operation-title">
+                    <div class="operation-icon">
+                        <i class="fas fa-divide"></i>
+                    </div>
+                    <h2>القسمة (Division)</h2>
+                </div>
+                <p>القسمة هي عملية تقسيم عدد إلى أجزاء متساوية.</p>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-problem">12 ÷ 3 = 4</div>
+                        <div class="example-solution">اثنا عشر مقسومة على ثلاثة يساوي أربعة</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">20 ÷ 4 = 5</div>
+                        <div class="example-solution">عشرون مقسومة على أربعة يساوي خمسة</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-problem">15 ÷ 3 = 5</div>
+                        <div class="example-solution">خمسة عشر مقسومة على ثلاثة يساوي خمسة</div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>نقاط مهمة في القسمة:</h3>
+                    <ul>
+                        <li>القسمة على الصفر غير ممكنة</li>
+                        <li>القسمة على الواحد: أي عدد ÷ 1 = نفس العدد</li>
+                        <li>القسمة على نفس العدد: أي عدد ÷ نفس العدد = 1</li>
+                        <li>القسمة على العشرة: انقل الفاصلة العشرية يساراً</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practice Section -->
+            <div class="practice-section">
+                <h2>تمرين تطبيقي</h2>
+                <p>حاول حل هذه المسألة:</p>
+                <div class="practice-problem">
+                    <span id="practice-num1">8</span> 
+                    <span id="practice-operation">+</span> 
+                    <span id="practice-num2">5</span> = ?
+                </div>
+                <input type="number" id="practice-answer" class="practice-input" placeholder="أدخل إجابتك">
+                <button id="check-practice" class="btn btn-primary">تحقق من الإجابة</button>
+                <div id="practice-result" class="practice-result"></div>
+                <button id="new-practice" class="btn btn-secondary">مسألة جديدة</button>
+            </div>
+
+            <!-- Summary -->
+            <div class="lesson-content">
+                <h2>ملخص الدرس</h2>
+                <p>لقد تعلمت العمليات الحسابية الأساسية الأربع:</p>
+                <ul style="font-size: 1.1rem; line-height: 2; margin: 1rem 0;">
+                    <li><strong>الجمع (+):</strong> لإضافة الأعداد</li>
+                    <li><strong>الطرح (-):</strong> لإيجاد الفرق بين الأعداد</li>
+                    <li><strong>الضرب (×):</strong> للجمع المتكرر</li>
+                    <li><strong>القسمة (÷):</strong> لتقسيم الأعداد</li>
+                </ul>
+                <p>هذه العمليات هي أساس الرياضيات وستحتاجها في حل المشاكل اليومية وفي دراستك المستقبلية.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#lessons">الدروس</a></li>
+                        <li><a href="index.html#exercises">التمارين</a></li>
+                        <li><a href="index.html#calculator">الحاسبة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Practice functionality
+        class PracticeProblems {
+            constructor() {
+                this.currentProblem = {};
+                this.initializePractice();
+            }
+            
+            initializePractice() {
+                this.generateNewProblem();
+                
+                document.getElementById('check-practice').addEventListener('click', () => {
+                    this.checkPracticeAnswer();
+                });
+                
+                document.getElementById('new-practice').addEventListener('click', () => {
+                    this.generateNewProblem();
+                });
+                
+                // Enter key support
+                document.getElementById('practice-answer').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.checkPracticeAnswer();
+                    }
+                });
+            }
+            
+            generateNewProblem() {
+                const operations = ['+', '-', '×', '÷'];
+                const operation = operations[Math.floor(Math.random() * operations.length)];
+                
+                let num1, num2;
+                
+                switch (operation) {
+                    case '+':
+                        num1 = Math.floor(Math.random() * 20) + 1;
+                        num2 = Math.floor(Math.random() * 20) + 1;
+                        break;
+                    case '-':
+                        num1 = Math.floor(Math.random() * 20) + 10;
+                        num2 = Math.floor(Math.random() * num1) + 1;
+                        break;
+                    case '×':
+                        num1 = Math.floor(Math.random() * 12) + 1;
+                        num2 = Math.floor(Math.random() * 12) + 1;
+                        break;
+                    case '÷':
+                        num2 = Math.floor(Math.random() * 10) + 1;
+                        num1 = num2 * (Math.floor(Math.random() * 10) + 1);
+                        break;
+                }
+                
+                this.currentProblem = { num1, num2, operation };
+                
+                document.getElementById('practice-num1').textContent = num1;
+                document.getElementById('practice-operation').textContent = this.getOperationSymbol(operation);
+                document.getElementById('practice-num2').textContent = num2;
+                
+                // Clear previous result and input
+                document.getElementById('practice-answer').value = '';
+                document.getElementById('practice-result').innerHTML = '';
+                document.getElementById('practice-result').className = 'practice-result';
+            }
+            
+            getOperationSymbol(operation) {
+                switch (operation) {
+                    case '+': return '+';
+                    case '-': return '−';
+                    case '×': return '×';
+                    case '÷': return '÷';
+                    default: return '+';
+                }
+            }
+            
+            checkPracticeAnswer() {
+                const userAnswer = parseInt(document.getElementById('practice-answer').value);
+                const resultElement = document.getElementById('practice-result');
+                
+                if (isNaN(userAnswer)) {
+                    resultElement.innerHTML = 'الرجاء إدخال إجابة صحيحة';
+                    resultElement.className = 'practice-result incorrect';
+                    return;
+                }
+                
+                let correctAnswer;
+                switch (this.currentProblem.operation) {
+                    case '+':
+                        correctAnswer = this.currentProblem.num1 + this.currentProblem.num2;
+                        break;
+                    case '-':
+                        correctAnswer = this.currentProblem.num1 - this.currentProblem.num2;
+                        break;
+                    case '×':
+                        correctAnswer = this.currentProblem.num1 * this.currentProblem.num2;
+                        break;
+                    case '÷':
+                        correctAnswer = this.currentProblem.num1 / this.currentProblem.num2;
+                        break;
+                }
+                
+                if (userAnswer === correctAnswer) {
+                    resultElement.innerHTML = `أحسنت! الإجابة صحيحة: ${correctAnswer}`;
+                    resultElement.className = 'practice-result correct';
+                } else {
+                    resultElement.innerHTML = `الإجابة خاطئة. الإجابة الصحيحة هي: ${correctAnswer}`;
+                    resultElement.className = 'practice-result incorrect';
+                }
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new PracticeProblems();
+        });
+    </script>
+</body>
+</html>

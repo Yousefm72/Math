@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع تعلم الرياضيات - Math Learning Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#lessons">الدروس</a></li>
+                <li><a href="#exercises">التمارين</a></li>
+                <li><a href="#calculator">الحاسبة</a></li>
+                <li><a href="#about">حول الموقع</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>تعلم الرياضيات بطريقة سهلة وممتعة</h1>
+                <p>موقع شامل لتعلم الرياضيات من الأساسيات إلى المستويات المتقدمة</p>
+                <div class="hero-buttons">
+                    <a href="#lessons" class="btn btn-primary">ابدأ التعلم</a>
+                    <a href="#exercises" class="btn btn-secondary">حل التمارين</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="math-symbols">
+                    <span class="symbol">+</span>
+                    <span class="symbol">−</span>
+                    <span class="symbol">×</span>
+                    <span class="symbol">÷</span>
+                    <span class="symbol">=</span>
+                    <span class="symbol">π</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lessons Section -->
+        <section id="lessons" class="lessons">
+            <div class="container">
+                <h2>الدروس التعليمية</h2>
+                <div class="lessons-grid">
+                    <div class="lesson-card">
+                        <div class="lesson-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <h3>الجمع والطرح</h3>
+                        <p>تعلم أساسيات الجمع والطرح مع الأرقام</p>
+                        <a href="Page1.html" class="lesson-link">ابدأ الدرس</a>
+                    </div>
+                  
+                    <div class="lesson-card">
+                        <div class="lesson-icon">
+                            <i class="fas fa-equals"></i>
+                        </div>
+                        <h3>المعادلات مع المجاهيل</h3>
+                        <p>تعلم حل المعادلات التي تحتوي على متغيرات</p>
+                        <a href="Page2.html" class="lesson-link">ابدأ الدرس</a>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-icon">
+                            <i class="fas fa-superscript"></i>
+                        </div>
+                        <h3>الأسس والجذور</h3>
+                        <p>تعلم قواعد الأسس والجذور</p>
+                        <a href="#" class="lesson-link">ابدأ الدرس</a>
+                    </div>
+                    <div class="lesson-card">
+                        <div class="lesson-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3>النسب المئوية</h3>
+                        <p>تعلم حساب النسب المئوية</p>
+                        <a href="#" class="lesson-link">ابدأ الدرس</a>
+                        </div>
+                    <div class="lesson-card">
+                        <div class="lesson-icon">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <h3>الهندسة</h3>
+                        <p>تعلم الأشكال الهندسية والمساحات</p>
+                        <a href="#" class="lesson-link">ابدأ الدرس</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Calculator -->
+        <section id="calculator" class="calculator-section">
+            <div class="container">
+                <h2>الحاسبة التفاعلية</h2>
+                <div class="calculator-container">
+                    <div class="calculator">
+                        <div class="calculator-display">
+                            <input type="text" id="calc-display" readonly>
+                        </div>
+                        <div class="calculator-buttons">
+                            <button class="calc-btn operator" data-value="AC">AC</button>
+                            <button class="calc-btn operator" data-value="±">±</button>
+                            <button class="calc-btn operator" data-value="%">%</button>
+                            <button class="calc-btn operator" data-value="÷">÷</button>
+                            <button class="calc-btn" data-value="7">7</button>
+                            <button class="calc-btn" data-value="8">8</button>
+                            <button class="calc-btn" data-value="9">9</button>
+                            <button class="calc-btn operator" data-value="×">×</button>
+                            <button class="calc-btn" data-value="4">4</button>
+                            <button class="calc-btn" data-value="5">5</button>
+                            <button class="calc-btn" data-value="6">6</button>
+                            <button class="calc-btn operator" data-value="-">−</button>
+                            <button class="calc-btn" data-value="1">1</button>
+                            <button class="calc-btn" data-value="2">2</button>
+                            <button class="calc-btn" data-value="3">3</button>
+                            <button class="calc-btn operator" data-value="+">+</button>
+                            <button class="calc-btn zero" data-value="0">0</button>
+                            <button class="calc-btn" data-value=".">.</button>
+                            <button class="calc-btn operator" data-value="=">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercises Section -->
+        <section id="exercises" class="exercises">
+            <div class="container">
+                <h2>التمارين التفاعلية</h2>
+                <div class="exercise-container">
+                    <div class="exercise-card">
+                        <h3>تمرين الجمع</h3>
+                        <div class="exercise-problem">
+                            <span id="num1">5</span> + <span id="num2">3</span> = ?
+                        </div>
+                        <input type="number" id="answer" placeholder="أدخل الإجابة">
+                        <button id="check-answer" class="btn btn-primary">تحقق من الإجابة</button>
+                        <div id="result" class="result"></div>
+                        <button id="new-problem" class="btn btn-secondary">مشكلة جديدة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>حول الموقع</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>موقع تعلم الرياضيات هو منصة تعليمية شاملة تهدف إلى تبسيط تعلم الرياضيات للطلاب من جميع الأعمار والمستويات.</p>
+                        <p>نقدم دروساً تفاعلية، تمارين عملية، وحاسبة ذكية لمساعدتك في فهم المفاهيم الرياضية.</p>
+                        <div class="features">
+                            <div class="feature">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>دروس شاملة</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-gamepad"></i>
+                                <span>تمارين تفاعلية</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-calculator"></i>
+                                <span>حاسبة ذكية</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>تصميم متجاوب</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#lessons">الدروس</a></li>
+                        <li><a href="#exercises">التمارين</a></li>
+                        <li><a href="#calculator">الحاسبة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 موقع تعلم الرياضيات. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

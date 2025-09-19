@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المعادلات مع المجاهيل - Equations with Unknowns | تعلم الرياضيات مع يوسف</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .lesson-content {
+            padding: 2rem;
+            background-color: var(--bg-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .equation-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background-color: var(--bg-light);
+        }
+        
+        .equation-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .equation-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .equation-example {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--primary-color);
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .equation-display {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            direction: ltr;
+        }
+        
+        .equation-explanation {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .solution-steps {
+            background-color: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .solution-steps h3 {
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: white;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: #0ea5e9;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-equation {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            direction: ltr;
+        }
+        
+        .step-explanation {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+        
+        .practice-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .practice-problem {
+            font-size: 1.8rem;
+            margin: 1.5rem 0;
+            direction: ltr;
+        }
+        
+        .practice-input {
+            width: 100%;
+            max-width: 200px;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.25rem;
+            text-align: center;
+            margin: 1rem 0;
+            direction: ltr;
+        }
+        
+        .practice-result {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .practice-result.correct {
+            background-color: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22c55e;
+        }
+        
+        .practice-result.incorrect {
+            background-color: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .back-button:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        
+        .key-points {
+            background-color: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .key-points h3 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+        
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            margin-bottom: 0.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #d97706;
+            font-weight: bold;
+        }
+        
+        .equation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .equation-type-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .equation-type-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .equation-type-example {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            direction: ltr;
+        }
+        
+        .equation-type-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="index.html#lessons">الدروس</a></li>
+                <li><a href="index.html#exercises">التمارين</a></li>
+                <li><a href="index.html#calculator">الحاسبة</a></li>
+                <li><a href="index.html#about">حول الموقع</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 120px;">
+        <div class="container">
+            <!-- Back Button -->
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-right"></i>
+                العودة للصفحة الرئيسية
+            </a>
+
+            <!-- Page Title -->
+            <div class="lesson-content">
+                <h1>المعادلات مع المجاهيل</h1>
+                <p>في هذا الدرس سنتعلم كيفية حل المعادلات التي تحتوي على مجاهيل (متغيرات). هذه المعادلات هي أساس الجبر وتساعدنا في حل المشاكل الرياضية.</p>
+            </div>
+
+            <!-- What are Equations Section -->
+            <div class="equation-section">
+                <div class="equation-title">
+                    <div class="equation-icon">
+                        <i class="fas fa-equals"></i>
+                    </div>
+                    <h2>ما هي المعادلة؟</h2>
+                </div>
+                <p>المعادلة هي عبارة رياضية تحتوي على علامة يساوي (=) وتتكون من طرفين متساويين. عندما تحتوي المعادلة على مجهول (مثل x أو y)، نسميها معادلة مع مجهول.</p>
+                
+                <div class="equation-example">
+                    <div class="equation-display">2x + 3 = 11</div>
+                    <div class="equation-explanation">
+                        هذه معادلة من الدرجة الأولى مع مجهول واحد (x).<br>
+                        الطرف الأيمن: 2x + 3<br>
+                        الطرف الأيسر: 11
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>مكونات المعادلة:</h3>
+                    <ul>
+                        <li>المجهول (x, y, z): القيمة التي نريد إيجادها</li>
+                        <li>المعاملات: الأرقام التي تضرب في المجاهيل</li>
+                        <li>الثوابت: الأرقام الثابتة في المعادلة</li>
+                        <li>علامة المساواة (=): تفصل طرفي المعادلة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Types of Equations Section -->
+            <div class="equation-section">
+                <div class="equation-title">
+                    <div class="equation-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h2>أنواع المعادلات</h2>
+                </div>
+                <p>هناك عدة أنواع من المعادلات، سنبدأ بالمعادلات البسيطة من الدرجة الأولى:</p>
+                
+                <div class="equation-types">
+                    <div class="equation-type-card">
+                        <div class="equation-type-title">معادلة بسيطة</div>
+                        <div class="equation-type-example">x + 5 = 12</div>
+                        <div class="equation-type-description">معادلة تحتوي على مجهول واحد مع عملية جمع</div>
+                    </div>
+                    <div class="equation-type-card">
+                        <div class="equation-type-title">معادلة مع طرح</div>
+                        <div class="equation-type-example">3x - 2 = 7</div>
+                        <div class="equation-type-description">معادلة تحتوي على مجهول مع عملية طرح</div>
+                    </div>
+                    <div class="equation-type-card">
+                        <div class="equation-type-title">معادلة مع ضرب</div>
+                        <div class="equation-type-example">2x = 10</div>
+                        <div class="equation-type-description">معادلة تحتوي على مجهول مضروب في عدد</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solving Equations Section -->
+            <div class="equation-section">
+                <div class="equation-title">
+                    <div class="equation-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h2>كيف نحل المعادلة؟</h2>
+                </div>
+                <p>لحل المعادلة، نحتاج إلى إيجاد قيمة المجهول التي تجعل طرفي المعادلة متساويين. سنتعلم ذلك خطوة بخطوة:</p>
+                
+                <div class="equation-example">
+                    <div class="equation-display">2x + 3 = 11</div>
+                    <div class="equation-explanation">حل هذه المعادلة لإيجاد قيمة x</div>
+                </div>
+
+                <div class="solution-steps">
+                    <h3>خطوات الحل:</h3>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-equation">2x + 3 = 11</div>
+                            <div class="step-explanation">نبدأ بالمعادلة الأصلية</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-equation">2x + 3 - 3 = 11 - 3</div>
+                            <div class="step-explanation">نطرح 3 من طرفي المعادلة لإزالة الثابت من الطرف الأيمن</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-equation">2x = 8</div>
+                            <div class="step-explanation">بعد الطرح، أصبح لدينا 2x = 8</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-equation">2x ÷ 2 = 8 ÷ 2</div>
+                            <div class="step-explanation">نقسم طرفي المعادلة على 2 لإيجاد قيمة x</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = 4</div>
+                            <div class="step-explanation">الحل النهائي: x = 4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>قواعد مهمة في حل المعادلات:</h3>
+                    <ul>
+                        <li>ما تفعله في طرف، افعله في الطرف الآخر</li>
+                        <li>يمكنك جمع أو طرح نفس العدد من طرفي المعادلة</li>
+                        <li>يمكنك ضرب أو قسمة طرفي المعادلة على نفس العدد (غير الصفر)</li>
+                        <li>هدفك هو إبقاء المجهول في طرف واحد</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- More Examples Section -->
+            <div class="equation-section">
+                <div class="equation-title">
+                    <div class="equation-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2>أمثلة إضافية</h2>
+                </div>
+                
+                <div class="equation-example">
+                    <div class="equation-display">3x - 5 = 10</div>
+                    <div class="equation-explanation">
+                        <strong>الحل:</strong><br>
+                        3x - 5 + 5 = 10 + 5 (نضيف 5 لطرفي المعادلة)<br>
+                        3x = 15<br>
+                        3x ÷ 3 = 15 ÷ 3 (نقسم على 3)<br>
+                        x = 5
+                    </div>
+                </div>
+
+                <div class="equation-example">
+                    <div class="equation-display">4x + 2 = 18</div>
+                    <div class="equation-explanation">
+                        <strong>الحل:</strong><br>
+                        4x + 2 - 2 = 18 - 2 (نطرح 2 من طرفي المعادلة)<br>
+                        4x = 16<br>
+                        4x ÷ 4 = 16 ÷ 4 (نقسم على 4)<br>
+                        x = 4
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equations with Two Unknowns Section -->
+            <div class="equation-section">
+                <div class="equation-title">
+                    <div class="equation-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h2>المعادلات مع مجهولين</h2>
+                </div>
+                <p>الآن سنتعلم كيفية حل المعادلات التي تحتوي على مجهولين (x و y). هذه المعادلات تسمى "نظام المعادلات" ونحتاج إلى معادلتين لحلها.</p>
+                
+                <div class="equation-example">
+                    <div class="equation-display">x + y = 8</div>
+                    <div class="equation-explanation">
+                        هذه معادلة من الدرجة الأولى مع مجهولين. لا يمكن حلها بمفردها لأن لدينا مجهولين في معادلة واحدة.
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>ماذا نحتاج لحل معادلة بمجهولين؟</h3>
+                    <ul>
+                        <li>معادلتان على الأقل</li>
+                        <li>نفس المجاهيل في المعادلتين</li>
+                        <li>استخدام طريقة الاستبدال أو الحذف</li>
+                        <li>إيجاد قيمة كل مجهول على حدة</li>
+                    </ul>
+                </div>
+
+                <div class="solution-steps">
+                    <h3>مثال: حل نظام المعادلات</h3>
+                    <p>لنحل النظام التالي:</p>
+                    <div class="equation-display" style="font-size: 1.5rem; margin: 1rem 0;">
+                        x + y = 8<br>
+                        2x - y = 4
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-equation">x + y = 8</div>
+                            <div class="step-explanation">المعادلة الأولى</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-equation">2x - y = 4</div>
+                            <div class="step-explanation">المعادلة الثانية</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-equation">x + y + 2x - y = 8 + 4</div>
+                            <div class="step-explanation">نجمع المعادلتين معاً (y - y = 0)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-equation">3x = 12</div>
+                            <div class="step-explanation">بعد الجمع، أصبح لدينا 3x = 12</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = 4</div>
+                            <div class="step-explanation">نقسم على 3: x = 12 ÷ 3 = 4</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-equation">4 + y = 8</div>
+                            <div class="step-explanation">نعوض قيمة x في المعادلة الأولى</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-equation">y = 4</div>
+                            <div class="step-explanation">نطرح 4 من طرفي المعادلة: y = 8 - 4 = 4</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = 4, y = 4</div>
+                            <div class="step-explanation">الحل النهائي: x = 4 و y = 4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>طرق حل المعادلات مع مجهولين:</h3>
+                    <ul>
+                        <li><strong>طريقة الجمع:</strong> نجمع المعادلتين لإلغاء أحد المجاهيل</li>
+                        <li><strong>طريقة الاستبدال:</strong> نعبر عن مجهول بدلالة الآخر</li>
+                        <li><strong>طريقة الحذف:</strong> نحذف مجهول واحد ونحل للمجهول الآخر</li>
+                        <li><strong>التحقق:</strong> نعوض الحل في المعادلتين للتأكد من صحته</li>
+                    </ul>
+                </div>
+
+                <div class="equation-example">
+                    <div class="equation-display">مثال آخر: 3x + 2y = 12</div>
+                    <div class="equation-explanation">
+                        <strong>مع المعادلة: x - y = 2</strong><br>
+                        <strong>الحل:</strong><br>
+                        من المعادلة الثانية: x = y + 2<br>
+                        نعوض في الأولى: 3(y + 2) + 2y = 12<br>
+                        3y + 6 + 2y = 12<br>
+                        5y + 6 = 12<br>
+                        5y = 6<br>
+                        y = 1.2<br>
+                        x = 1.2 + 2 = 3.2
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quadratic Equations Section -->
+            <div class="equation-section">
+                <div class="equation-title">
+                    <div class="equation-icon">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <h2>المعادلات التربيعية</h2>
+                </div>
+                <p>الآن سنتعلم المعادلات التربيعية، وهي معادلات من الدرجة الثانية تحتوي على x². هذه المعادلات أكثر تعقيداً من المعادلات الخطية ولها طرق حل خاصة.</p>
+                
+                <div class="equation-example">
+                    <div class="equation-display">x² + 5x + 6 = 0</div>
+                    <div class="equation-explanation">
+                        هذه معادلة تربيعية من الدرجة الثانية. أعلى قوة للمجهول x هي 2 (x²).
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>ما هي المعادلة التربيعية؟</h3>
+                    <ul>
+                        <li>معادلة تحتوي على x² (مربع المجهول)</li>
+                        <li>الصيغة العامة: ax² + bx + c = 0</li>
+                        <li>a, b, c أرقام ثابتة (a ≠ 0)</li>
+                        <li>لها حلان محتملان (أو حل واحد أو لا حل)</li>
+                    </ul>
+                </div>
+
+                <div class="equation-types">
+                    <div class="equation-type-card">
+                        <div class="equation-type-title">معادلة تربيعية بسيطة</div>
+                        <div class="equation-type-example">x² = 16</div>
+                        <div class="equation-type-description">x² = 16، إذن x = ±4</div>
+                    </div>
+                    <div class="equation-type-card">
+                        <div class="equation-type-title">معادلة تربيعية كاملة</div>
+                        <div class="equation-type-example">x² + 5x + 6 = 0</div>
+                        <div class="equation-type-description">تحتوي على x² و x و ثابت</div>
+                    </div>
+                    <div class="equation-type-card">
+                        <div class="equation-type-title">معادلة تربيعية ناقصة</div>
+                        <div class="equation-type-example">x² - 9 = 0</div>
+                        <div class="equation-type-description">تحتوي على x² و ثابت فقط</div>
+                    </div>
+                </div>
+
+                <div class="solution-steps">
+                    <h3>طرق حل المعادلات التربيعية:</h3>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-equation">التحليل إلى عوامل</div>
+                            <div class="step-explanation">نحاول تحليل المعادلة إلى عوامل</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-equation">إكمال المربع</div>
+                            <div class="step-explanation">نحول المعادلة إلى صيغة (x + h)² = k</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-equation">الصيغة التربيعية</div>
+                            <div class="step-explanation">نستخدم الصيغة: x = (-b ± √(b² - 4ac)) / 2a</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equation-example">
+                    <div class="equation-display">مثال: x² + 5x + 6 = 0</div>
+                    <div class="equation-explanation">
+                        <strong>الحل بالتحليل:</strong><br>
+                        نبحث عن عددين مجموعهما 5 وحاصل ضربهما 6<br>
+                        العددان هما: 2 و 3<br>
+                        إذن: x² + 5x + 6 = (x + 2)(x + 3)<br>
+                        الحل: x = -2 أو x = -3
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>الصيغة التربيعية (المعروفة بصيغة المميز):</h3>
+                    <p>للمعادلة ax² + bx + c = 0:</p>
+                    <div class="equation-display" style="font-size: 1.3rem; margin: 1rem 0;">
+                        x = (-b ± √(b² - 4ac)) / 2a
+                    </div>
+                    <p>حيث:</p>
+                    <ul>
+                        <li><strong>a:</strong> معامل x²</li>
+                        <li><strong>b:</strong> معامل x</li>
+                        <li><strong>c:</strong> الثابت</li>
+                        <li><strong>المميز:</strong> b² - 4ac (يحدد عدد الحلول)</li>
+                    </ul>
+                </div>
+
+                <div class="solution-steps">
+                    <h3>مثال باستخدام الصيغة التربيعية:</h3>
+                    <p>لنحل المعادلة: 2x² - 5x + 3 = 0</p>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-equation">a = 2, b = -5, c = 3</div>
+                            <div class="step-explanation">نحدد المعاملات</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-equation">المميز = b² - 4ac = (-5)² - 4(2)(3) = 25 - 24 = 1</div>
+                            <div class="step-explanation">نحسب المميز</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = (-(-5) ± √1) / (2 × 2)</div>
+                            <div class="step-explanation">نعوض في الصيغة التربيعية</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = (5 ± 1) / 4</div>
+                            <div class="step-explanation">نبسط المعادلة</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = (5 + 1) / 4 = 6/4 = 1.5</div>
+                            <div class="step-explanation">الحل الأول</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = (5 - 1) / 4 = 4/4 = 1</div>
+                            <div class="step-explanation">الحل الثاني</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <div class="step-equation">x = 1 أو x = 1.5</div>
+                            <div class="step-explanation">الحل النهائي</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>المميز (Discriminant) وتأثيره:</h3>
+                    <ul>
+                        <li><strong>المميز > 0:</strong> حلان مختلفان (مثل المثال السابق)</li>
+                        <li><strong>المميز = 0:</strong> حل واحد (مزدوج)</li>
+                        <li><strong>المميز < 0:</strong> لا يوجد حل حقيقي (حلول مركبة)</li>
+                    </ul>
+                </div>
+
+                <div class="equation-example">
+                    <div class="equation-display">مثال آخر: x² - 4x + 4 = 0</div>
+                    <div class="equation-explanation">
+                        <strong>الحل:</strong><br>
+                        المميز = (-4)² - 4(1)(4) = 16 - 16 = 0<br>
+                        بما أن المميز = 0، فالحل مزدوج<br>
+                        x = (-(-4) ± √0) / (2 × 1) = 4/2 = 2<br>
+                        الحل: x = 2 (مزدوج)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Section -->
+            <div class="practice-section">
+                <h2>تمرين تطبيقي</h2>
+                <p>حاول حل هذه المعادلة:</p>
+                <div class="practice-problem">
+                    <span id="practice-equation">2x + 4 = 12</span>
+                </div>
+                <p>ما هي قيمة x؟</p>
+                <input type="number" id="practice-answer" class="practice-input" placeholder="أدخل إجابتك">
+                <button id="check-practice" class="btn btn-primary">تحقق من الإجابة</button>
+                <div id="practice-result" class="practice-result"></div>
+                <button id="new-practice" class="btn btn-secondary">معادلة جديدة</button>
+            </div>
+
+            <!-- Summary -->
+            <div class="lesson-content">
+                <h2>ملخص الدرس</h2>
+                <p>لقد تعلمت أساسيات حل المعادلات مع المجاهيل:</p>
+                <ul style="font-size: 1.1rem; line-height: 2; margin: 1rem 0;">
+                    <li><strong>المعادلة:</strong> عبارة رياضية تحتوي على علامة يساوي ومجهول</li>
+                    <li><strong>المجهول:</strong> القيمة التي نريد إيجادها (مثل x)</li>
+                    <li><strong>قواعد الحل:</strong> ما تفعله في طرف، افعله في الطرف الآخر</li>
+                    <li><strong>الهدف:</strong> إبقاء المجهول في طرف واحد مع الثوابت في الطرف الآخر</li>
+                    <li><strong>المعادلات مع مجهولين:</strong> تحتاج إلى معادلتين لحلها</li>
+                    <li><strong>طرق الحل:</strong> الجمع، الاستبدال، والحذف</li>
+                    <li><strong>المعادلات التربيعية:</strong> تحتوي على x² ولها طرق حل خاصة</li>
+                    <li><strong>الصيغة التربيعية:</strong> x = (-b ± √(b² - 4ac)) / 2a</li>
+                    <li><strong>المميز:</strong> يحدد عدد الحلول (2، 1، أو 0 حلول)</li>
+                </ul>
+                <p>هذه المهارات أساسية في الجبر وستساعدك في حل مشاكل رياضية أكثر تعقيداً.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#lessons">الدروس</a></li>
+                        <li><a href="index.html#exercises">التمارين</a></li>
+                        <li><a href="index.html#calculator">الحاسبة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Practice functionality for equations
+        class EquationPractice {
+            constructor() {
+                this.currentEquation = {};
+                this.initializePractice();
+            }
+            
+            initializePractice() {
+                this.generateNewEquation();
+                
+                document.getElementById('check-practice').addEventListener('click', () => {
+                    this.checkPracticeAnswer();
+                });
+                
+                document.getElementById('new-practice').addEventListener('click', () => {
+                    this.generateNewEquation();
+                });
+                
+                // Enter key support
+                document.getElementById('practice-answer').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.checkPracticeAnswer();
+                    }
+                });
+            }
+            
+            generateNewEquation() {
+                const equationTypes = [
+                    { a: 2, b: 4, c: 12, operation: '+' },
+                    { a: 3, b: 5, c: 17, operation: '+' },
+                    { a: 4, b: 2, c: 18, operation: '+' },
+                    { a: 2, b: 6, c: 16, operation: '+' },
+                    { a: 3, b: 4, c: 13, operation: '+' }
+                ];
+                
+                const equation = equationTypes[Math.floor(Math.random() * equationTypes.length)];
+                this.currentEquation = equation;
+                
+                // Calculate the solution
+                let solution;
+                if (equation.operation === '+') {
+                    solution = (equation.c - equation.b) / equation.a;
+                }
+                
+                this.currentEquation.solution = solution;
+                
+                // Display the equation
+                document.getElementById('practice-equation').textContent = 
+                    `${equation.a}x ${equation.operation} ${equation.b} = ${equation.c}`;
+                
+                // Clear previous result and input
+                document.getElementById('practice-answer').value = '';
+                document.getElementById('practice-result').innerHTML = '';
+                document.getElementById('practice-result').className = 'practice-result';
+            }
+            
+            checkPracticeAnswer() {
+                const userAnswer = parseInt(document.getElementById('practice-answer').value);
+                const resultElement = document.getElementById('practice-result');
+                
+                if (isNaN(userAnswer)) {
+                    resultElement.innerHTML = 'الرجاء إدخال إجابة صحيحة';
+                    resultElement.className = 'practice-result incorrect';
+                    return;
+                }
+                
+                if (userAnswer === this.currentEquation.solution) {
+                    resultElement.innerHTML = `أحسنت! الإجابة صحيحة: x = ${this.currentEquation.solution}`;
+                    resultElement.className = 'practice-result correct';
+                } else {
+                    resultElement.innerHTML = `الإجابة خاطئة. الإجابة الصحيحة هي: x = ${this.currentEquation.solution}`;
+                    resultElement.className = 'practice-result incorrect';
+                }
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new EquationPractice();
+        });
+    </script>
+</body>
+</html>
