@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الضرب والقسمة - Multiplication and Division</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .div-container {
+            max-width: 1200px;
+            margin: 120px auto 2rem;
+            padding: 0 20px;
+        }
+        
+        .div-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #007bff, #007bff);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .operation-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .operation-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .example-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .example-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .step {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .calculation {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-align: center;
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            background: #f0f4ff;
+            border-radius: 6px;
+            border: 1px solid #e0e7ff;
+        }
+        
+        .formula-highlight {
+            background: linear-gradient(135deg, #fef3c7, #fcd34d);
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #92400e;
+        }
+        
+        .interactive-calc {
+            background: #fafafa;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .calc-input {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            width: 80px;
+            text-align: center;
+            margin: 0 0.5rem;
+        }
+        
+        .calc-result {
+            background: #dcfce7;
+            color: #166534;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .div-container {
+                margin: 100px auto 2rem;
+                padding: 0 15px;
+            }
+            
+            .operation-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="Page1.html">الجمع والطرح</a></li>
+                <li><a href="Page2.html">المعادلات</a></li>
+                <li><a href="HomeWork.html">الواجب</a></li>
+                <li><a href="Quiz1.html">الاختبار</a></li>
+                <li><a href="Div.html">الضرب والقسمة</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="div-container">
+            <div class="div-header">
+                <h1><i class="fas fa-times-circle"></i> الضرب والقسمة</h1>
+                <p>تعلم العمليات الحسابية الأساسية للضرب والقسمة</p>
+                <p>أمثلة عملية وتمارين تفاعلية لضبط المهارات</p>
+            </div>
+
+            <!-- الضرب -->
+            <div class="operation-section">
+                <h2 class="operation-title">
+                    <i class="fas fa-times"></i>
+                    عملية الضرب
+                </h2>
+                
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-info-circle"></i>
+                        ما هو الضرب؟
+                    </div>
+                    <p>الضرب عملية حسابية تتكرر فيها عملية الجمع. مثلاً: 3 × 4 = 4 + 4 + 4 = 12</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-calculator"></i>
+                        مثال بسيط: 6 × 7
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            ضرب الآحاد: 6 × 7 = 42
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            كتابة النتيجة مباشرة
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        6 × 7 = 42
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-store"></i>
+                        مثال عملي: محب الدروس
+                    </div>
+                    <div>
+                        اشترى أحمد 8 دلاء، وكل دلو يسع 5 لترات من الماء. كم لتراً من الماء في المجموع؟
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            عدد الدلاء = 8 دلاء
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            سعة كل دلو = 5 لترات
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            المجموع = 8 × 5 = 40 لتر
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        إجمالي الماء = 8 × 5 = 40 لتر
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        مثال: مضاعفات الأعداد
+                    </div>
+                    <div>
+                        جد مضاعفات العدد 9 حتى العدد الخامس
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            9 × 1 = 9
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            9 × 2 = 18
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            9 × 3 = 27
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            9 × 4 = 36
+                        </div>
+                        <div class="step">
+                            <span class="step-number">5</span>
+                            9 × 5 = 45
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        مضاعفات 9: 9 × 1 = 9, 9 × 2 = 18, 9 × 3 = 27, 9 × 4 = 36, 9 × 5 = 45
+                    </div>
+                </div>
+
+                <div class="formula-highlight">
+                    الضرب = تكرار عملية الجمع<br>
+                    أ × ب = عدد مرات الجمع للعدد أ (ب) مرة
+                </div>
+            </div>
+
+            <!-- القسمة -->
+            <div class="operation-section">
+                <h2 class="operation-title">
+                    <i class="fas fa-divide"></i>
+                    عملية القسمة
+                </h2>
+                
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-info-circle"></i>
+                        ما هي القسمة؟
+                    </div>
+                    <p>القسمة عملية عكسية للضرب. مثلاً: 12 ÷ 3 = ؟ تعني كم مرة يمكن قسمة 12 على 3 أو كم ثلاثات في 12.</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-calculator"></i>
+                        مثال بسيط: 56 ÷ 8
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            نسأل: كم مرة يذهب 8 في 56؟
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            8 × 7 = 56، إذن 56 ÷ 8 = 7
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            التحقق: 56 ÷ 8 = 7 لأن 8 × 7 = 56
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        56 ÷ 8 = 7 ← التحقق: 8 × 7 = 56 ✓
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-users"></i>
+                        مثال عملي: توزيع الطلاب
+                    </div>
+                    <div>
+                        تم توزيع 48 طالباً على 6 مجموعات متساوية. كم طالباً في كل مجموعة؟
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            إجمالي الطلاب = 48 طالباً
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            عدد المجموعات = 6 مجموعات
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            الطلاب في كل مجموعة = 48 ÷ 6 = 8 طلاب
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        طلاب في كل مجموعة = 48 ÷ 6 = 8 طلاب
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-cookie-bite"></i>
+                        مثال: قطع البيتزا
+                    </div>
+                    <div>
+                        قطع بيتزا واحدة إلى 8 أجزاء متساوية، وأكل أحمد 3 أجزاء منها. ما الكسر الذي أكلته أحمد؟
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            إجمالي الأجزاء = 8 أجزاء
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            الأجزاء المأكولة = 3 أجزاء
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            الكسر = أجزاء مأكولة ÷ إجمالي الأجزاء = 3 ÷ 8 = 3/8
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        الكسر المأكول = 3 ÷ 8 = 3/8 من البيتزا
+                    </div>
+                </div>
+
+                <div class="formula-highlight">
+                    القسمة = التوزيع أو تقسيم الأجزاء<br>
+                    المقسوم ÷ المقسوم عليه = الخارج
+                </div>
+            </div>
+
+            <!-- العلاقة بين الضرب والقسمة -->
+            <div class="operation-section">
+                <h2 class="operation-title">
+                    <i class="fas fa-link"></i>
+                    العلاقة بين الضرب والقسمة
+                </h2>
+                
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-exchange-alt"></i>
+                        الضرب والقسمة عمليتان عكسيتاان
+                    </div>
+                    <div>
+                        إذا كان: 9 × 6 = 54<br>
+                        فإن: 54 ÷ 9 = 6 و 54 ÷ 6 = 9<br>
+                        هذا يعني أن الضرب والقسمة في علاقة عكسية.
+                    </div>
+                    
+                    <div class="formula-highlight">
+                        إذا كان أ × ب = ج، فإن:<br>
+                        ج ÷ أ = ب<br>
+                        ج ÷ ب = أ
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-check-circle"></i>
+                        التحقق من القسمة باستخدام الضرب
+                    </div>
+                    <div>
+                        مثال: تحقق من الإجابة 72 ÷ 9 = 8
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            الإجابة المقترحة: 72 ÷ 9 = 8
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            التحقق: 9 × 8 = 72
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            72 = 72 ✓ إذن الإجابة صحيحة
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        72 ÷ 9 = 8 لأن 9 × 8 = 72 ✓
+                    </div>
+                </div>
+            </div>
+
+            <!-- الآلة الحاسبة التفاعلية -->
+            <div class="operation-section">
+                <h2 class="operation-title">
+                    <i class="fas fa-calculator"></i>
+                    الآلة الحاسبة التفاعلية
+                </h2>
+                
+                <div class="interactive-calc">
+                    <h3>🧮 حاسبة الضرب والقسمة</h3>
+                    
+                    <div style="margin: 1rem 0;">
+                        <label>العدد الأول: </label>
+                        <input type="number" class="calc-input" id="num1" value="12">
+                        <br><br>
+                        
+                        <button class="btn btn-primary" onclick="multiply()" style="margin: 0.5rem;">
+                            <i class="fas fa-times"></i> ضرب
+                        </button>
+                        
+                        <button class="btn btn-secondary" onclick="divide()" style="margin: 0.5rem;">
+                            <i class="fas fa-divide"></i> قسمة
+                        </button>
+                        
+                        <br><br>
+                        <label>العدد الثاني: </label>
+                        <input type="number" class="calc-input" id="num2" value="3">
+                    </div>
+                    
+                    <div class="calc-result" id="result">
+                        اختر العملية المدونة أعلاه للبدء
+                    </div>
+                </div>
+
+                <!-- جدول الضرب التعلمي -->
+                <div class="interactive-calc">
+                    <h3>📚 جدول الضرب التفاعلي</h3>
+                    <div>
+                        <label>اختر الجدول: </label>
+                        <select class="calc-input" id="tableSelect" onchange="generateTable()">
+                            <option value="1">جدول الضرب في 1</option>
+                            <option value="2">جدول الضرب في 2</option>
+                            <option value="3">جدول الضرب في 3</option>
+                            <option value="4">جدول الضرب في 4</option>
+                            <option value="5">جدول الضرب في 5</option>
+                            <option value="6">جدول الضرب في 6</option>
+                            <option value="7">جدول الضرب في 7</option>
+                            <option value="8">جدول الضرب في 8</option>
+                            <option value="9">جدول الضرب في 9</option>
+                            <option value="10">جدول الضرب في 10</option>
+                        </select>
+                    </div>
+                    
+                    <div id="multiplicationTable" class="calculation" style="margin-top: 1rem;">
+                        <!-- سيتم ملؤها بالجافا سكريبت -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ملخص القواعد -->
+            <div class="operation-section">
+                <h2 class="operation-title">
+                    <i class="fas fa-clipboard-check"></i>
+                    ملخص مهم القواعد والقوانين
+                </h2>
+                
+                <div class="formula-highlight">
+                    <h3>📝 قوانين مهمة:</h3>
+                    <p><strong>قانون تبادل الضرب:</strong> أ × ب = ب × أ</p>
+                    <p><strong>قانون تجميع الضرب:</strong> (أ × ب) × ج = أ × (ب × ج)</p>
+                    <p><strong>قانون توزيع الضرب:</strong> أ × (ب + ج) = (أ × ب) + (أ × ج)</p>
+                    <p><strong>القسمة والضرب مرتبطان:</strong> إذا كان أ × ب = ج، فإن ج ÷ أ = ب</p>
+                    <p><strong>القسمة على صفر:</strong> غير معرفة (لا يمكن القسمة على صفر)</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-lightbulb"></i>
+                        نصائح مهمة في الضرب والقسمة
+                    </div>
+                    <div>
+                        <strong>الضرب:</strong><br>
+                        • تذكر جداول الضرب عن ظهر قلب<br>
+                        • امسح الفرق الخسارة عند الضرب<br>
+                        • استمر الكامل لتجنب الأخطاء<br><br>
+                        
+                        <strong>القسمة:</strong><br>
+                        • دائماً تحقق من إجابتك بالضرب<br>
+                        • امسح الباقي المتبقي بعناية<br>
+                        • تأكد من أن القسمة على صفر غير صحيحة
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات من الأساسيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط الدروس</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="Page1.html">الجمع والطرح</a></li>
+                        <li><a href="Page2.html">المعادلات</a></li>
+                        <li><a href="Div.html">= الضرب والقسمة</a></li>
+                        <li><a href="HomeWork.html">الواجب المنزلي</a></li>
+                        <li><a href="Quiz1.html">الاختبار</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>مفاهيم الضرب والقسمة</h3>
+                    <ul>
+                        <li>الضرب كجمع مكرر</li>
+                        <li>القسمة كتوزيع متساو</li>
+                        <li>جداول الضرب</li>
+                        <li>التحقق من القسمة</li>
+                        <li>العمليات المتبادلة</li>
+                        <li>التطبيقات العملية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 موقع تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير التمرير للعناصر
+            const elements = document.querySelectorAll('.operation-section, .example-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+
+            // التنسيق المتنقل
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // توليد الجدول الافتراضي
+            generateTable();
+        });
+
+        function multiply() {
+            const num1 = parseInt(document.getElementById('num1').value);
+            const num2 = parseInt(document.getElementById('num2').value);
+            const result = num1 * num2;
+            
+            document.getElementById('result').innerHTML = `
+                <i class="fas fa-times"></i> الضرب<br>
+                ${num1} × ${num2} = ${result}
+            `;
+        }
+
+        function divide() {
+            const num1 = parseInt(document.getElementById('num1').value);
+            const num2 = parseInt(document.getElementById('num2').value);
+            
+            if (num2 === 0) {
+                document.getElementById('result').innerHTML = `
+                    <i class="fas fa-exclamation-triangle"></i> خطأ<br>
+                    لا يمكن القسمة على صفر
+                `;
+                return;
+            }
+            
+            const quotient = Math.floor(num1 / num2);
+            const remainder = num1 % num2;
+            
+            let resultText = `${num1} ÷ ${num2} = ${quotient}`;
+            if (remainder > 0) {
+                resultText += ` مع باقي ${remainder}`;
+            }
+            
+            document.getElementById('result').innerHTML = `
+                <i class="fas fa-divide"></i> القسمة<br>
+                ${resultText}
+            `;
+        }
+
+        function generateTable() {
+            const table = document.getElementById('tableSelect').value;
+            const tableNumber = parseInt(table);
+            let tableHTML = '';
+            
+            for (let i = 1; i <= 12; i++) {
+                const result = tableNumber * i;
+                tableHTML += `${tableNumber} × ${i} = ${result}<br>`;
+            }
+            
+            document.getElementById('multiplicationTable').innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>
