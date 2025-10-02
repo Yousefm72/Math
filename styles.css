@@ -163,16 +163,16 @@ p {
 
 /* Hero Section */
 .hero {
-    padding: 120px 2rem 4rem;
+    padding: 120px 2rem 2rem;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     display: flex;
     align-items: center;
-    min-height: 80vh;
+    min-height: 30vh;
 }
 
 .hero-content {
-    flex: 1;
+ flex: 1; 
     max-width: 600px;
 }
 

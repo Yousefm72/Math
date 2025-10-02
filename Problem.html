@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسائل كلامية في الرياضيات - Word Problems in Math</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .problem-container {
+            max-width: 1200px;
+            margin: 120px auto 2rem;
+            padding: 0 20px;
+        }
+        
+        .problem-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-intro {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 2px solid #e5e7eb;
+            text-align: center;
+        }
+        
+        .category-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .category-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .category-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .problem-example {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .problem-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .solution-steps {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .solution-step {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #f0f4ff;
+            border-radius: 6px;
+            border: 1px solid #e0e7ff;
+        }
+        
+        .step-label {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .calculation-formula {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-align: center;
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            background: #f9fafb;
+            border-radius: 6px;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .final-answer {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #166534;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #fef3c7, #fcd34d);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tips-title {
+            color: #d97706;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tips-list {
+            color: #92400e;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tips-list li {
+            margin-bottom: 0.5rem;
+                    margin-bottom: 0.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+        
+        .formula-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .formula-text {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .problem-container {
+                margin: 100px auto 2rem;
+                padding: 0 15px;
+            }
+            
+            .problem-text {
+                font-size: 1.1rem;
+            }
+            
+            .calculation-formula {
+                font-size: 1.1rem;
+            }
+            
+            .category-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="Page1.html">الجمع والطرح</a></li>
+                <li><a href="Page2.html">المعادلات</a></li>
+                <li><a href="HomeWork.html">الواجب</a></li>
+                <li><a href="Quiz1.html">الاختبار</a></li>
+                <li><a href="Problem.html">المسائل</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="problem-container">
+            <div class="problem-header">
+                <h1><i class="fas fa-chart-line"></i> المسائل الكلامية في الرياضيات</h1>
+                <p>تعلم حل المشاكل الحسابية في الحياة العملية</p>
+                <p>مسائل متنوعة تشمل الخصومات والرواتب والأرباح والأسعار</p>
+            </div>
+
+            <div class="problem-intro">
+                <h2>ما هي المسائل الكلامية؟</h2>
+                <p>المسائل الكلامية هي مشاكل رياضية مكتوبة بالكلمات التي تتطلب تحويلها إلى معادلات رياضية وحلها لاستخراج الإجابة المطلوبة. هذه المسائل تساعد على ربط الرياضيات بالحياة العملية.</p>
+                
+                <div class="tips-section">
+                    <div class="tips-title">
+                        <i class="fas fa-lightbulb"></i>
+                        نصائح لحل المسائل الكلامية
+                    </div>
+                    <ul class="tips-list">
+                        <li>اقرأ المسألة بعناية وأكثر من مرة</li>
+                        <li>حدد المعطيات المطلوبة والغير مطلوبة</li>
+                        <li>ضع المتغيرات لهذا المجهول</li>
+                        <li>اكتب المعادلة المناسبة</li>
+                        <li>حل المعادلة خطوة بخطوة</li>
+                        <li>تحقق من منطقية الإجابة</li>
+                        <li>أعد كتابة النتيجة بالصيغة المطلوبة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- الخصومات -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-percentage"></i>
+                    مسائل الخصومات والتخفيضات
+                </h2>
+                
+                <div class="category-description">
+                    الخصم هو تخفيض في السعر الأصلي للسلعة. يُحسب كحساب نسبي أو مبلغ ثابت من السعر الأصلي.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> سعر قميص في المتجر هو 120 درهم. إذا كان هناك خصم 20%، فما هو السعر النهائي الذي يدفعه العميل؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">المعطيات:</span>
+                            السعر الأصلي = 120 درهم<br>
+                            نسبة الخصم = 20%
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب مبلغ الخصم = السعر الأصلي × نسبة الخصم
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            مبلغ الخصم = 120 × 20% = 120 × 0.20 = 24 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            حساب السعر النهائي بعد الخصم
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            السعر النهائي = السعر الأصلي - مبلغ الخصم<br>
+                            السعر النهائي = 120 - 24 = 96 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: السعر النهائي = 96 درهم
+                    </div>
+                    
+                    <div class="formula-card">
+                        <div class="formula-text">الصيغة العامة: السعر النهائي = السعر الأصلي × (1 - نسبة الخصم)</div>
+                    </div>
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الثاني:</strong> اشترى أحمد تلفزيون بسعر 2500 درهم بعد خصم 15%. ما كان السعر الأصلي للتلفزيون؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">المعطيات:</span>
+                            السعر بعد الخصم = 2500 درهم<br>
+                            نسبة الخصم = 15%
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الحل:</span>
+                            إذا كان الخصم 15%، فإن السعر النهائي يمثل 85% من السعر الأصلي
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            السعر الأصلي = السعر النهائي ÷ 0.85<br>
+                            السعر الأصلي = 2500 ÷ 0.85 = 2941.18 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: السعر الأصلي كان 2941 ريال (تقريباً)
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجمع والطرح -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-plus-square"></i>
+                    مسائل الجمع والطرح
+                </h2>
+                
+                <div class="category-description">
+                    مسائل تتطلب جمع أو طرح مبالغ مختلفة لحساب المجاميع أو الفروق بين القيم.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> حسابات شهرية: وصل كهرباء 180 درهم، ووصل الماء 95 درهم، ووصل هاتف 155 درهم، وشراء مواد غذائية 420 درهم. كم مجموع المصروفات؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">المعطيات:</span>
+                            الكهرباء = 180 درهم<br>
+                            الماء = 95 درهم<br>
+                            الهاتف = 155 درهم<br>
+                            الغذائية = 420 درهم
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            المجموع = 180 + 95 + 155 + 420 = 850 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: مجموع المصروفات الشهرية = 850 درهم
+                    </div>
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الثاني:</strong> رصيد حساب أحمد كان 3500 درهم. سحب مبلغ 450 درهم، ثم سحب مبلغ 320 درهم، ثم أودع مبلغ 250 درهم. ما هو الرصيد النهائي؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب إجمالي المبالغ المسحوبة
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            إجمالي المسحوب = 450 + 320 = 770 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            الرصيد النهائي = الرصيد الأصلي - المسحوب + المودع
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            الرصيد النهائي = 3500 - 770 + 250 = 2980 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: الرصيد النهائي = 2980 درهم
+                    </div>
+                </div>
+            </div>
+
+            <!-- القسمة والنسب -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-divide"></i>
+                    مسائل القسمة والنسب
+                </h2>
+                
+                <div class="category-description">
+                    مسائل تتطلب تقسيم المبالغ أو حساب النسب بين الأجزاء المختلفة لإيجاد القيم المطلوبة.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> صاحب مطعم يريد توزيع أرباح شهرية بقيمة 15000 درهم على 3 شركاء بنسبة 2:3:5. كم نصيب كل شريك؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">المعطيات:</span>
+                            إجمالي الأرباح = 15000 درهم<br>
+                            نسبة الشراكة = 2:3:5
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            مجموع النسب = 2 + 3 + 5 = 10 أجزاء
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            قيمة الجزء الواحد = 15000 ÷ 10 = 1500 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثالثة:</span>
+                            حساب نصيب كل شريك
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            الشريك الأول = 1500 × 2 = 3000 درهم<br>
+                            الشريك الثاني = 1500 × 3 = 4500 درهم<br>
+                            الشريك الثالث = 1500 × 5 = 7500 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: الشريك الأول = 3000 درهم، الثاني = 4500 درهم، الثالث = 7500 درهم
+                    </div>
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الثاني:</strong> مطعم يحتاج 36 كيلو من الأرز لاستعداد الطعام لمأدبة 120 شخص. كم كيلو يحتاج لمأدبة 200 شخص؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">المعطيات:</span>
+                            120 شخص يحتاجون 36 كيلو<br>
+                            المطلوب: كمية الأرز لـ 200 شخص
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الحل:</span>
+                            هذا نوع من مسائل التناسب المباشر
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            كيلو لكل شخص = 36 ÷ 120 = 0.3 كيلو<br>
+                            للـ 200 شخص = 0.3 × 200 = 60 كيلو
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: يحتاج 60 كيلو من الأرز لمأدبة 200 شخص
+                    </div>
+                </div>
+            </div>
+
+            <!-- القوائم والتفصيل -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-list"></i>
+                    مسائل التفصيل والقوائم
+                </h2>
+                
+                <div class="category-description">
+                    مسائل تتطلب تنظيم وعرض حسابات مفصلة لأغراض محاسبية أو تقديرية.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> مكتبة صغيرة تريد إعداد قائمة ميزانية ربع سنوية. لديهم الإيرادات التالية: مبيعات الكتب (8500 درهم)، الاشتراكات (3200 درهم)، الكوبي (1100 درهم). النفقات: الإيجار (1500 درهم)، الرواتب (4000 درهم)، الكهرباء والشبكة (300 درهم). احسب الربح أو الخسارة.
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب إجمالي الإيرادات
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            الإيرادات = 8500 + 3200 + 1100 = 12800 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            حساب إجمالي النفقات
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            النفقات = 1500 + 4000 + 300 = 5800 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثالثة:</span>
+                            حساب الربح أو الخسارة
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            النتيجة = الإيرادات - النفقات = 12800 - 5800 = 7000 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: ربح صافي = 7000 درهم ربع سنوياً
+                    </div>
+                </div>
+            </div>
+
+            <!-- الرواتب -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-money-bill-wave"></i>
+                    مسائل الرواتب والأجور
+                </h2>
+                
+                <div class="category-description">
+                    مسائل تتعلق بحساب الرواتب الأساسية والبدلات والاستقطاعات المختلفة.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> موظف راتبه الشهري 5500 درهم، بدل مواصلات 400 درهم، بدل إسكان 800 درهم، تأمين صحي 150 درهم، ضريبة دخل 12%. احسب الراتب الصافي.
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب المجموع الإجمالي قبل الاستقطاعات
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            إجمالي الراتب = 5500 + 400 + 800 = 6700 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            حساب الاستقطاعات
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            تأمين صحي = 150 درهم<br>
+                            ضريبة الدخل = 6700 × 12% = 6700 × 0.12 = 804 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثالثة:</span>
+                            حساب الصافي
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            إجمالي الاستقطاعات = 150 + 804 = 954 درهم<br>
+                            الراتب الصافي = 6700 - 954 = 5746 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: الراتب الصافي = 5746 درهم شهرياً
+                    </div>
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الثاني:</strong> موظف عمل إضافي لمدة 25 ساعة بسعر ساعة 60 درهم. بجانب راتبه الأساسي الذي هو 800 درهم شهرياً. كم يصبح راتبه الكامل؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الحساب:</span>
+                            العمل الإضافي = عدد الساعات × أجر الساعة
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            العمل الإضافي = 25 × 60 = 1500 درهم
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            الراتب الكامل = الراتب الأساسي + العمل الإضافي = 800 + 1500 = 2300 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: الراتب الكامل = 2300 درهم
+                    </div>
+                </div>
+            </div>
+
+            <!-- الجدوى والأرباح -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-chart-profit"></i>
+                    مسائل الجدوى والأرباح
+                </h2>
+                
+                <div class="category-description">
+                    مسائل تركز على حساب الربحية والجدوى التجارية للمشاريع والاستثمارات.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> متجر صغير يبيع منتج بتكلفة إنتاج 50 درهم، ويبيعه بسعر 85 درهم. إذا كان إيجار المتجر الشهري 1500 درهم، وتكاليف أخرى 300 درهم. كم يحتاج البيع ليحقق ربح؟ كم قطعة يحتاج لبيعها؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب التكاليف الثابتة الشهرية
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            التكاليف الثابتة = 1500 + 300 = 1800 درهم شهرياً
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            حساب ربح القطعة الواحدة
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            ربح القطعة = سعر البيع - تكلفة الإنتاج<br>
+                            ربح القطعة = 85 - 50 = 35 درهم للقطعة
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثالثة:</span>
+                            حساب عدد القطع المطلوبة لتغطية التكاليف
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            عدد القطع = التكاليف الثابتة ÷ ربح القطعة<br>
+                            عدد القطع = 1800 ÷ 35 ≈ 52 قطعة
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: يحتاج لبيع 52 قطعة على الأقل شهرياً لتغطية التكاليف<br>
+                        أي مبيكات بقيمة 4420 درهم شهرياً كحد أدنى
+                    </div>
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الثاني:</strong> مستثمر اشترى أسهم بقيمة 50000 درهم. بعد سنة قيمة الأسهم أصبحت 63000 درهم. احسب نسبة الأرباح والمردود على الاستثمار.
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب مقدار الربح
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            الربح = القيمة الحالية - القيمة الأصلية<br>
+                            الربح = 63000 - 50000 = 13000 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            حساب نسبة العائد
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            نسبة العائد = (الربح ÷ الاستثمار الأصلي) × 100%<br>
+                            نسبة العائد = (13000 ÷ 50000) × 100% = 26%
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: نسبة العائد السنوي = 26%
+                    </div>
+                </div>
+            </div>
+
+            <!-- الأسعار والتكلفة -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-tags"></i>
+                    مسائل الأسعار والتكلفة
+                </h2>
+                
+                <div class="category-description">
+                    مسائل تتعلق بحساب الأسعار المثلى ومراجعات التكاليف وأثرها على الأسعار النهائية.
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الأول:</strong> مطعم تكلفة تحضير وجبة واحدة 35 درهم. إيراد 800 درهم يومياً من مبيعات الإفطار. إذا كان معدل العملاء 25 عميل يومياً، فما هو السعر للوجبة الواحدة؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب متوسط الإيراد للعميل الواحد
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            متوسط الإيراد = إجمالي الإيراد ÷ عدد العملاء<br>
+                            متوسط الإيراد = 800 ÷ 25 = 32 درهم للعميل الواحد
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            مقارنة التكلفة بالفعل
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            التكلفة = 35 درهم للوجبة الإفطار<br>
+                            الفعلى المتوقع = 32 درهم للوجبة الإفطار<br>
+                            الفرق = 35 - 32 = 3 درهم خسارة لكل وسيلة طلبية
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: يوجد خسارة صغيرة قدرها 3 دراهم لكل وسيلة طلبية<br>
+                        التوصية: إما رفع السعر أو تقليل التكلفة
+                    </div>
+                </div>
+
+                <div class="problem-example">
+                    <div class="problem-text">
+                        <strong>المثال الثاني:</strong> متجر أثاث يشتري كرسي من المورد بتكلفة 120 درهم، يريد تحقيق ربح نسبي قدره 30%. بالإضافة إلى عمولة المبيعات 10% على السعر النهائي. ما يكون السعر النهائي للعميل؟
+                    </div>
+                    
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الأولى:</span>
+                            حساب سعر البيع الأساسي مع هامش الربح 30%
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            سعر البيع الأساسي = التكلفة × (1 + نسبة الربح)<br>
+                            سعر البيع = 120 × (1 + 0.30) = 120 × 1.30 = 156 درهم
+                        </div>
+                        
+                        <div class="solution-step">
+                            <span class="step-label">الخطوة الثانية:</span>
+                            إضافة عمولة المبيعات إلى السعر النهائي
+                        </div>
+                        
+                        <div class="calculation-formula">
+                            عمولة المبيعات = 156 × 10% = 15.6 درهم<br>
+                            السعر النهائي = 156 + 15.6 = 171.6 درهم ≈ 172 درهم
+                        </div>
+                    </div>
+                    
+                    <div class="final-answer">
+                        الإجابة: السعر النهائي للكرسي = 172 درهم<br>
+                        التكلفة: 120 + الربح: 36 + العمولة: 16 = 172 درهم
+                    </div>
+                    
+                    <div class="formula-card">
+                        <div class="formula-text">السعر النهائي = (التكلفة الأساسية × (1 + %الربح)) × (1 + %العمولة)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ملخص القواعد -->
+            <div class="category-section">
+                <h2 class="category-title">
+                    <i class="fas fa-hammer"></i>
+                    خصائص حل المسائل الكلامية
+                </h2>
+                
+                <div class="tips-section">
+                    <div class="tips-title">
+                        <i class="fas fa-brain"></i>
+                        استراتيجية حل المسائل الكلامية
+                    </div>
+                    
+                    <div style="color: #92400e; font-size: 1.05rem; line-height: 1.6;">
+                        <strong>1. فهم المشكلة:</strong> اقرأ المسألة بعناية، حدد المعطيات المطلوبة والمجردة.<br><br>
+                        
+                        <strong>2. تحديد المعلومات:</strong> القائمة المطلوبة، المثال المفروض، الفهم المفهومي.<br><br>
+                        
+                        <strong>3. اختيار طريقة الحل:</strong> جدول، رسم بياني، معادلة جبرية، أسلوب منطقي.<br><br>
+                        
+                        <strong>4. تطبيق الحل:</strong> استخدم الصيغ والرياضيات المناسبة، احسب خطوة بخطوة.<br><br>
+                        
+                        <strong>5. التحقق من النتيجة:</strong> تأكد من منطقية الإجابة، تحقق بالتعويض في المسألة الأصلية.<br><br>
+                        
+                        <strong>6. عرض الحل:</strong> أعطِ الإجابة بالشكل المطلوب، مع شرح النتيجة إذا ضرورة.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات من الأساسيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط الدروس</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="Page1.html">الجمع والطرح</a></li>
+                        <li><a href="Page2.html">المعادلات</a></li>
+                        <li><a href="HomeWork.html">الواجب المنزلي</a></li>
+                        <li><a href="Quiz1.html">الاختبار</a></li>
+                        <li><a href="Problem.html">المسائل الكلامية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>نصائح المسائل</h3>
+                    <ul>
+                        <li>افهم المسألة جيداً</li>
+                        <li>حدد المعطيات بدقة</li>
+                        <li>اختر الطريقة المناسبة</li>
+                        <li>تحقق من النتيجة</li>
+                        <li>تدرَّب يومياً</li>
+                        <li>راجع القواعد الرياضية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 موقع تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة تفاعل بسيط للصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة تأثير للعناصر عند التمرير
+            const elements = document.querySelectorAl
+            const elements = document.querySelectorAll('.problem-example, .category-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+
+            // تنسيق متنقل قابل للطي
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // توسيع/طي حلول المسائل عند النقر
+            const solutionSteps = document.querySelectorAll('.solution-steps');
+            solutionSteps.forEach(steps => {
+                const toggleButton = steps.previousElementSibling.querySelector('.toggle-solution');
+                if (!toggleButton) {
+                    steps.style.display = steps.style.display || 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

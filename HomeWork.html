@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنواع الأقواس في الرياضيات</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .homework-container {
+            max-width: 1000px;
+            margin: 120px auto 2rem;
+            padding: 0 20px;
+        }
+        
+        .homework-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e5e7eb;
+        }
+        
+        .problem-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            marginBottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .problem-expression {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+        
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .step {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .calculation {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-align: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: #f0f4ff;
+            border-radius: 6px;
+        }
+        
+        .explanation {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .answer-box {
+            background: #dcfce7;
+            color: #166534;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .answer-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #166534;
+        }
+        
+        .brackets-example {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .bracket-type {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            min-width: 120px;
+        }
+        
+        .bracket-symbol {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .bracket-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        @media (max-width: 768px) {
+            .homework-container {
+                margin: 100px auto 2rem;
+                padding: 0 15px;
+            }
+            
+            .problem-expression {
+                font-size: 1.5rem;
+            }
+            
+            .calculation {
+                font-size: 1rem;
+            }
+            
+            .brackets-example {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="Page1.html">الجمع والطرح</a></li>
+                <li><a href="Page2.html">المعادلات</a></li>
+                <li><a href="#homework">الواجب</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="homework-container">
+            <div class="homework-header">
+                <h1><i class="fas fa-book"></i> أنواع الأقواس في الرياضيات</h1>
+                <p>الجمع والطرح مع الأقواس المختلفة</p>
+                <p>تعلم كيفية حل المسائل الحسابية باستخدام الأقواس المستديرة والأقواس المعكوفة والمعقوفة</p>
+            </div>
+
+            <!-- أنواع الأقواس -->
+            <div class="problem-section">
+                <h2 class="problem-title">
+                    <i class="fas fa-info-circle"></i>
+                    أنواع الأقواس في الرياضيات
+                </h2>
+                
+                <div class="brackets-example">
+                    <div class="bracket-type">
+                        <div class="bracket-symbol">( )</div>
+                        <div class="bracket-name">الأقواس المستديرة</div>
+                    </div>
+                    <div class="bracket-type">
+                        <div class="bracket-symbol">{ }</div>
+                        <div class="bracket-name">الأقواس المعكوفة</div>
+                    </div>
+                    <div class="bracket-type">
+                        <div class="bracket-symbol">[ ]</div>
+                        <div class="bracket-name">الأقواس المعقوفة</div>
+                    </div>
+                </div>
+                
+                <div class="step-by-step">
+                    <div class="step-title">ترتيب العمليات الحسابية (PEMDAS)</div>
+                    <div class="explanation">
+                        1. <strong>P</strong>arentheses - الأقواس المستديرة ( ) أولاً<br>
+                        2. <strong>E</strong>xponents - الأسس ثانياً<br>
+                        3. <strong>M</strong>ultiplication & <strong>D</strong>ivision - الضرب والقسمة<br>
+                        4. <strong>A</strong>ddition & <strong>S</strong>ubtraction - الجمع والطرح أخيراً
+                    </div>
+                </div>
+            </div>
+
+            <!-- المشكلة الأولى -->
+            <div class="problem-section">
+                <h3 class="problem-title">
+                    <i class="fas fa-plus"></i>
+                    المشكلة الأولى - الجمع مع الأقواس المستديرة
+                </h3>
+                
+                <div class="problem-expression">
+                    15 + (8 + 12)
+                </div>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            حل ما بداخل الأقواس المستديرة أولاً
+                        </div>
+                        <div class="calculation">8 + 12 = 20</div>
+                        <div class="explanation">نبدأ بحل العمليات داخل الأقواس المستديرة حسب ترتيب PEMDAS</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            استبدال نتيجة الأقواس في التعبير الأصلي
+                        </div>
+                        <div class="calculation">15 + (20) = 15 + 20</div>
+                        <div class="explanation">بعد حل ما داخل الأقواس، نستبدل النتيجة في مكان الأقواس</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            إجراء العملية النهائية
+                        </div>
+                        <div class="calculation">15 + 20 = 35</div>
+                        <div class="explanation">نكمل العملية الجمع بين الأرقام المتبقية</div>
+                    </div>
+                    
+                    <div class="answer-box">
+                        <div>الإجابة النهائية:</div>
+                        <div class="answer-number">35</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المشكلة الثانية -->
+            <div class="problem-section">
+                <h3 class="problem-title">
+                    <i class="fas fa-minus"></i>
+                    المشكلة الثانية - الطرح مع الأقواس المعطوفة
+                </h3>
+                
+                <div class="problem-expression">
+                    50 - {25 - (10 + 5)}
+                </div>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            حل الأقواس الداخلية أولاً (الأقواس المستديرة)
+                        </div>
+                        <div class="calculation">10 + 5 = 15</div>
+                        <div class="explanation">نبدأ بالأقواس الأعمق (المستديرة) حسب ترتيب PEMDAS</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            استبدال النتيجة ومن ثم حل الأقواس المعكوفة
+                        </div>
+                        <div class="calculation">25 - (15) = 25 - 15 = 10</div>
+                        <div class="explanation">بعد حل الأقواس المستديرة، نحل الأقواس المعكوفة</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            إجراء العملية النهائية
+                        </div>
+                        <div class="calculation">50 - {10} = 50 - 10 = 40</div>
+                        <div class="explanation">أخيراً، نستبدل نتيجة الأقواس المعكوفة ونكمل العملية</div>
+                    </div>
+                    
+                    <div class="answer-box">
+                        <div>الإجابة النهائية:</div>
+                        <div class="answer-number">40</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المشكلة الثالثة -->
+            <div class="problem-section">
+                <h3 class="problem-title">
+                    <i class="fas fa-equals"></i>
+                    المشكلة الثالثة - جمع وطرح مع أنواع مختلفة من الأقواس
+                </h3>
+                
+                <div class="problem-expression">
+                    [15 + (8 - 3)] + {12 - [7 + (5 - 2)]}
+                </div>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            حل الأقواس المستديرة الأولى
+                        </div>
+                        <div class="calculation">8 - 3 = 5</div>
+                        <div class="explanation">نبدأ بالأقواس المستديرة الداخلية</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            حل الأقواس المعقوفة الأولى
+                        </div>
+                        <div class="calculation">15 + (5) = 15 + 5 = 20</div>
+                        <div class="explanation">نستبدل النتيجة من الخطوة الأولى ونكمل عملية المعقوفة الأولى</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            حل الأقواس المستديرة الثانية
+                        </div>
+                        <div class="calculation">5 - 2 = 3</div>
+                        <div class="explanation">حل الأقواس المستديرة داخل المعكوفة الثانية</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">4</span>
+                            حل الأقواس المعقوفة الثانية
+                        </div>
+                        <div class="calculation">7 + (3) = 7 + 3 = 10</div>
+                        <div class="explanation">نستبدل النتيجة من الخطوة الثالثة ونحل المعقوفة الثانية</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">5</span>
+                            حل الأقواس المعكوفة الخارجية
+                        </div>
+                        <div class="calculation">12 - [10] = 12 - 10 = 2</div>
+                        <div class="explanation">نستبدل نتيجة المعقوفة الثانية ونحل المعكوفة الخارجية</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">6</span>
+                            إجراء العملية النهائية
+                        </div>
+                        <div class="calculation">[20] + {2} = 20 + 2 = 22</div>
+                        <div class="explanation">أخيراً، نجمع نتائج المعقوفتين</div>
+                    </div>
+                    
+                    <div class="answer-box">
+                        <div>الإجابة النهائية:</div>
+                        <div class="answer-number">22</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المشكلة الرابعة -->
+            <div class="problem-section">
+                <h3 class="problem-title">
+                    <i class="fas fa-calculator"></i>
+                    المشكلة الرابعة - تمرين شامل مع الطرح
+                </h3>
+                
+                <div class="problem-expression">
+                    {45 - [20 + (15 - 8)]} - (12 + 3)
+                </div>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            حل الأقواس المستديرة الداخلية
+                        </div>
+                        <div class="calculation">15 - 8 = 7</div>
+                        <div class="explanation">نبدأ بالأقواس الأعمق أولاً</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            حل الأقواس المعقوفة
+                        </div>
+                        <div class="calculation">20 + (7) = 20 + 7 = 27</div>
+                        <div class="explanation">نستبدل النتيجة من الخطوة الأولى ونحل المعقوفة</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            حل الأقواس المعكوفة الخارجية
+                        </div>
+                        <div class="calculation">45 - [27] = 45 - 27 = 18</div>
+                        <div class="explanation">نستبدل نتيجة المعقوفة ونحل المعكوفة الخارجية</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">4</span>
+                            حل الأقواس المستديرة الأخيرة
+                        </div>
+                        <div class="calculation">12 + 3 = 15</div>
+                        <div class="explanation">حل الأقواس المستديرة في الجانب الأيمن</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">5</span>
+                            إجراء العملية النهائية
+                        </div>
+                        <div class="calculation">{18} - (15) = 18 - 15 = 3</div>
+                        <div class="explanation">أخيراً، نطرح نتائج المجموعتين</div>
+                    </div>
+                    
+                    <div class="answer-box">
+                        <div>الإجابة النهائية:</div>
+                        <div class="answer-number">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ملخص القواعد -->
+            <div class="problem-section">
+                <h3 class="problem-title">
+                    <i class="fas fa-lightbulb"></i>
+                    ملخص القواعد المهمة
+                </h3>
+                
+                <div class="step-by-step">
+                    <div class="step-title">✨ نصائح وملاحظات هامة:</div>
+                    <div class="explanation">
+                        <strong>1. ترتيب الحل:</strong> دائماً ابدأ بالأقواس الأعمق (الأقواس الداخلية)<br>
+                        <strong>2. أنواع الأقواس:</strong> ( ) ثم { } ثم [ ] حسب أولويتهم<br>
+                        <strong>3. العمليات:</strong> داخل الأقواس نفسها، الجمع والطرح لهما نفس الأولوية<br>
+                        <strong>4. الأخطاء الشائعة:</strong> لا تنسى حل الأقواس بالترتيب الصحيح<br>
+                        <strong>5. التحقق:</strong> تأكد من حل جميع الأقواس قبل الانتقال للعملية التالية<br>
+                        <strong>6. التنظيم:</strong> حل مشكلة خطوة بخطوة واكتب كل نتيجة بوضوح
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات من الأساسيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط الدروس</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="Page1.html">الجمع والطرح</a></li>
+                        <li><a href="Page2.html">المعادلات</a></li>
+                        <li><a href="HomeWork.html">الواجب المنزلي</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>نصائح التعلم</h3>
+                    <ul>
+                        <li>تدرب يومياً</li>
+                        <li>راجع القواعد</li>
+                        <li>استخدم الأقواس بدقة</li>
+                        <li>تحقق من الحلول</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 موقع تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إضافة تفاعل بسيط للصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة تأثير للخطوات عند التمرير
+            const steps = document.querySelectorAll('.step');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            steps.forEach(step => {
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(20px)';
+                step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(step);
+            });
+
+            // تنسيق متنقل قابل للطي
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

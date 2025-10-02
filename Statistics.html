@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإحصاء والاحتمالات - Statistics and Probability</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .stats-container {
+            max-width: 1200px;
+            margin: 120px auto 2rem;
+            padding: 0 20px;
+        }
+        
+        .stats-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .concept-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .concept-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+			margin-bottom: 1.5rem;
+            display: flex;
+
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .definition-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .definition-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .definition-text {
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .example-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .step {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .calculation {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-align: center;
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            background: #f0f4ff;
+            border-radius: 6px;
+            border: 1px solid #e0e7ff;
+        }
+        
+        .formula-highlight {
+            background: linear-gradient(135deg, #fef3c7, #fcd34d);
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #92400e;
+        }
+        
+        .answer-box {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #166534;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        /* Stick Diagram Styles */
+        .stick-diagram {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stick-drawing {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            min-height: 300px;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .stick-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        
+        .stick-visual {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            min-width: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        .stick-label {
+            font-weight: 600;
+            color: var(--text-color);
+            min-width: 80px;
+            text-align: left;
+        }
+        
+        .stick-value {
+            font-weight: bold;
+            color: var(--secondary-color);
+            min-width: 40px;
+            text-align: center;
+            background: #f0f4ff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .stick-scale {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 1.2rem;
+            margin-left: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        /* Interactive Probabilities */
+        .probability-wheel {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ef4444 0deg 120deg,
+                #3b82f6 120deg 240deg,
+                #22c55e 240deg 360deg
+            );
+            margin: 1rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .wheel-spinner {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+        
+        .dice-roller {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .dice {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .dice:hover {
+            transform: scale(1.1);
+        }
+        
+        .frequency-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .frequency-table th,
+        .frequency-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .frequency-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .frequency-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .stats-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .stat-demo {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .interactive-demo {
+            background: #fafafa;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1rem 0;
+            text-align:: center;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-container {
+                margin: 100px auto 2rem;
+                padding: 0 15px;
+            }
+            
+            .concept-title {
+                font-size: 1.5rem;
+            }
+            
+            .stick-drawing {
+                min-height: 250px;
+            }
+            
+            .probability-wheel {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .wheel-spinner {
+                width: 130px;
+                height: 130px;: height: 130px;
+            }
+            
+            .stats-visual {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stat-demo {
+                min-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="Page1.html">الجمع والطرح</a></li>
+                <li><a href="Page2.html">المعادلات</a></li>
+                <li><a href="HomeWork.html">الواجب</a></li>
+                <li><a href="Quiz1.html">الاختبار</a></li>
+                <li><a href="Problem.html">المسائل</a></li>
+                <li><a href="Analytical.html">الهندسة</a></li>
+                <li><a href="Statistics.html">الإحصاء</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="stats-container">
+            <div class="stats-header">
+                <h1><i class="fas fa-chart-bar"></i> الإحصاء والاحتمالات</h1>
+                <p>تعلم المفاهيم الأساسية للإحصاء وحساب الاحتمالات</p>
+                <p>الاحتمالات، الإمكانيات، الفرص، المتوسط، التكرار، المخطط العمودي</p>
+            </div>
+
+            <!-- مقدمة في الإحصاء -->
+            <div class="concept-section">
+                <h2 class="concept-title">
+                    <i class="fas fa-chart-line"></i>
+                    مقدمة في الإحصاء
+                </h2>
+                
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-info-circle"></i>
+                        ما هو الإحصاء؟
+                    </div>
+                    <div class="definition-text">
+                        الإحصاء هو علم جمع وتحليل البيانات الرقمية واستخراج المعلومات المفيدة منها. يساعدنا في فهم الأنماط والاتجاهات في البيانات واتخاذ القرارات المستنيرة.
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-database"></i>
+                        أنواع البيانات في الإحصاء
+                    </div>
+                    <div class="definition-text">
+                        <strong>البيانات الكمية:</strong> يمكن قياسها بالأرقام (العمر، الطول، الوزن)<br>
+                        <strong>البيانات النوعية:</strong> تصف الصفات والخصائص (اللون، الطعم، النوع)<br>
+                        <strong>البيانات المنفصلة:</strong> قيم محددة وقابلة للعد (عدد الطلاب في الفصل)<br>
+                        <strong>البيانات المتصلة:</strong> قيم قابلة للقياس على مقياس مستمر (درجة الحرارة)
+                    </div>
+                </div>
+
+                <div class="stats-visual">
+                    <div class="stat-demo">
+                        <div class="stat-icon">📊</div>
+                        <h3>الإحصاء الوصفي</h3>
+                        <p>وصف البيانات وتلخيصها</p>
+                    </div>
+                    
+                    <div class="stat-demo">
+                        <div class="stat-icon">🎯</div>
+                        <h3>الاستدلال الإحصائي</h3>
+                        <p>استخلاص النتائج من البيانات</p>
+                    </div>
+                    
+                    <div class="stat-demo">
+                        <div class="stat-icon">📈</div>
+                        <h3>تحليل البيانات</h3>
+                        <p>البحث عن الأنماط والاتجاهات</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الاحتمالات -->
+            <div class="concept-section">
+                <h2 class="concept-title">
+                    <i class="fas fa-dice"></i>
+                    الاحتمالات والمفهوم الأساسي
+                </h2>
+                
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-question-circle"></i>
+                        ما هي الاحتمالات؟
+                    </div>
+                    <div class="definition-text">
+                        الاحتمال هو احتمال وقوع حدث معين. يُعبَّر عن الاحتمال بعدد بين 0 و 1، أو كنسبة مئوية بين 0% و 100%. الاحتمال 0 يعني استحالة الحدث، والاحتمال 1 يعني تأكيد الحدث.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-calculator"></i>
+                        مثال: رمي قطعة نقد
+                    </div>
+                    <div class="definition-text">
+                        قطعة النقد لها وجهان: صورة (ص) ونظير (ن). ما احتمال ظهور الصورة؟
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            إجمالي النتائج الممكنة = 2 (ص أو ن)
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            النتائج المرغوبة = 1 (الصورة فقط)
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            احتمال ظهور الصورة = عدد النتائج المرغوبة ÷ إجمالي النتائج
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        احتمال ظهور الصورة = 1 ÷ 2 = 0.5 = 50%
+                    </div>
+                    
+                    <div class="answer-box">
+                        الإجابة: احتمال ظهور الصورة = 50%
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎲 تجربة تفاعلية: رمي حجر النرد</h3>
+                    <div class="dice-roller">
+                        <div class="dice" id="dice1">⚄</div>
+                        <div class="dice" id="dice2">⚃</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="rollDice()" style="margin-top: 1rem;">
+                        رمي النرد
+                    </button>
+                    <p id="diceResult" style="margin-top: 1rem;"></p>
+                </div>
+
+                <div class="formula-highlight">
+                    احتمالية وقوع حدث = عدد النتائج المرغوبة ÷ إجمالي النتائج الممكنة<br>
+                    P(حدث) = النتائج المرغوبة / النتائج الممكنة
+                </div>
+            </div>
+
+            <!-- الإمكانيات والفرص -->
+            <div class="concept-section">
+                <h2 class="concept-title">
+                    <i class="fas fa-lightbulb"></i>
+                    الإمكانيات والفرص
+                </h2>
+                
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-shuffle"></i>
+                        مفهوم الإمكانيات
+                    </div>
+                    <div class="definition-text">
+                        الإمكانيات هي جميع النتائج الممكنة لحدث ما. فهم الإمكانيات يساعدنا في حساب الاحتمالات بشكل دقيق ومعرفة جميع الخيارات المتاحة.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-calculator"></i>
+                        مثال: سلة تحتوي على كرات ملونة
+                    </div>
+                    <div class="definition-text">
+                        سلة تحتوي على: 3 كرات حمراء، 5 كرات زرقاء، و 2 كرات خضراء. كم احتمال اختيار كرة زرقاء؟
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            إجمالي عدد الكرات = 3 + 5 + 2 = 10 كرات
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            عدد الكرات الزرقاء = 5 كرات
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            احتمال اختيار كرة زرقاء = 5 ÷ 10
+                        </div>
+                    </div>
+                    
+                    <div class="calculation">
+                        احتمال اختيار كرة زرقاء = 5 ÷ 10 = 0.5 = 50%
+                    </div>
+                    
+                    <div class="answer-box">
+                        الإجابة: احتمال اختيار كرة زرقاء = 50%
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-wheelchair"></i>
+                        مثال: العجلة الدوارة
+                    </div>
+                    <div class="interactive-demo">
+                        <div class="probability-wheel">
+                            <div class="wheel-spinner">
+                                <span>اضغط للدوران</span>
+                            </div>
+                        </div>
+                        <p>العجلة مقسمة إلى 3 أقسام:<br>
+                        🔴 أحمر (40%) 🔵 أزرق (40%) 🟢 أخضر (20%)</p>
+                        <button class="btn btn-secondary" onclick="wheelToSpin()">
+                            اقليد على العجلة
+                        </button>
+                        <p id="wheelResult"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المتوسط الحسابي -->
+            <div class="concept-section">
+                <h2 class="concept-title">
+                    <i class="fas fa-balance-scale"></i>
+                    المتوسط الحسابي
+                </h2>
+                
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-calculator"></i>
+                        ما هو المتوسط؟
+                    </div>
+                    <div class="definition-text">
+                        المتوسط الحسابي هو القيمة التي نحصل عليها عند جمع جميع القيم وتقسيم النتيجة على عددها. يُعتبر مقياساً لـ"الوسط" أو "النقطة الوسطى" لمجموعة من البيانات.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        مثال: درجات الطلاب
+                    </div>
+                    <div class="definition-text">
+                        درجات 5 طلاب في مادة الرياضيات: 85، 92، 78، 88، 95. احسب المتوسط الحسابي.
+                    </div>
+                    
+                    <div class="step-by-step">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            جمع جميع الدرجات
+                        </div>
+                        <div class="calculation">
+                            85 + 92 + 78 + 88 + 95 = 438
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            قسمة المجموع على عدد الدرجات
+                        </div>
+                        <div class="calculation">
+                            المتوسط = 438 ÷ 5 = 87.6
+                        </div>
+                    </div>
+                    
+                    <div class="answer-box">
+                        الإجابة: المتوسط الحسابي = 87.6 درجة
+                    </div>
+                </div>
+
+                <div class="formula-highlight">
+                    المتوسط الحسابي = مجموع القيم ÷ عددها<br>
+                    المتوسط = (ق₁ + ق₂ + ق₃ + ... + قₙ) ÷ ن
+                </div>
+            </div>
+
+            <!-- التكرار والمخططات -->
+            <div class="concept-section">
+                <h2 class="concept-title">
+                    <i class="fas fa-chart-bar"></i>
+                    التكرار والمخططات العمودية (Stick Diagrams)
+                </h2>
+                
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-chart-column"></i>
+                        ما هي المخططات العمودية؟
+                    </div>
+                    <div class="definition-text">
+                        المخططات العمودية (Stick Diagrams) هي طريقة لتمثيل البيانات باستخدام خطوط أفقية أو عمودية. كل خط يمثل قيمة معينة، مما يجعل مقارنة البيانات سهلة وواضحة.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-school"></i>
+                        مثال: بيانات المدارس في المنطقة
+                    </div>
+                    <div class="definition-text">
+                        عدد الطلاب في مدارس المنطقة: المدرسة أ = 120، المدرسة ب = 95، المدرسة ج = 150، المدرسة د = 80
+                    </div>
+                    
+                    <table class="frequency-table">
+                        <thead>
+                            <tr>
+                                <th>المدرسة</th>
+                                <th>عدد الطلاب</th>
+                                <th>التكرار النسبي</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المدرسة أ</td>
+                                <td>120</td>
+                                <td>27%</td>
+                            </tr>
+                            <tr>
+                                <td>المدرسة ب</td>
+                                <td>95</td>
+                                <td>22%</td>
+                            </tr>
+                            <tr>
+                                <td>المدرسة ج</td>
+                                <td>150</td>
+                                <td>34%</td>
+                            </tr>
+                            <tr>
+                                <td>المدرسة د</td>
+                                <td>80</td>
+                                <td>18%</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><strong>المجموع</strong></td>
+                                <td><strong>445</strong></td>
+                                <td><strong>100%</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <!-- Stick Diagram -->
+                    <div class="stick-diagram">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">المخطط العمودي لعدد الطلاب</h4>
+                        <div class="stick-drawing">
+                            <div class="stick-scale">
+                                <span>150</span>
+                                <span>125</span>
+                                <span>100</span>
+                                <span>75</span>
+                                <span>50</span>
+                                <span>25</span>
+                                <span>0</span>
+                            </div>
+                           <div class="stick-bar">
+                               <div class="stick-label">المدرسة أ:</div>
+                               <div class="stick-visual" style="width: 240px;">120 طالب</div>
+                               <div class="stick-value">120</div>
+                            </div>
+                            <div class="stick-bar">
+                               <div class="stick-label">المدرسة ب:</div>
+                               <div class="stick-visual" style="width: 190px;">95 طالب</div>
+                               <div class="stick-value">95</div>
+                            </div>
+                            <div class="stick-bar">
+                               <div class="stick-label">المدرسة ج:</div>
+                               <div class="stick-visual" style="width: 300px;">150 طالب</div>
+                               <div class="stick-value">150</div>
+                            </div>
+                            <div class="stick-bar">
+                               <div class="stick-label">المدرسة د:</div>
+                               <div class="stick-visual" style="width: 160px;">80 طالب</div>
+                               <div class="stick-value">80</div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">
+                        <i class="fas fa-calendar"></i>
+                        مثال: بيانات الشهرية للتغيب
+                    </div>
+                    <div class="definition-text">
+                        عدد أيام الغياب لطلاب الفصل خلال الشهر:
+                    </div>
+                    
+                    <!-- Vertical Stick Diagram -->
+                    <div class="stick-diagram">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">مخطط عمودي لتكرار الغياب</h4>
+                        <div class="stick-drawing" style="flex-direction: row; justify-content: space-around; align-items: flex-end; height: 200px;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="stick-visual" style="width: 40px; height: 60px; writing-mode: horizontal-tb;">2 يوم</div>
+                                <div style="margin-top: 0.5rem; font-weight: bold;">8 طلاب</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="stick-visual" style="width: 40px; height: 90px; writing-mode: horizontal-tb;">3 أيام</div>
+                                <div style="margin-top: 0.5rem; font-weight: bold;">12 طالب</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="stick-visual" style="width: 40px; height: 120px; writing-mode: horizontal-tb;">4 أيام</div>
+                                <div style="margin-top: 0.5rem; font-weight: bold;">15 طالب</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="stick-visual" style="width: 40px; height: 150px; writing-mode: horizontal-tb;">5 أيام</div>
+                                <div style="margin-top: 0.5rem; font-weight: bold;">10 طلاب</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-highlight">
+                    التكرار النسبي = (التكرار / إجمالي التكرار) × 100%<br>
+                    التكرار المئوي = التكرار النسبي × 100%
+                </div>
+            </div>
+
+            <!-- ملخص القواعد -->
+            <div class="concept-section">
+                <h2 class="concept-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    ملخص مهم قواعد الإحصاء والاحتمالات
+                </h2>
+                
+                <div class="formula-highlight">
+                    <h3>📋 المعادلات الرئيسية:</h3>
+                    <p><strong>الاحتمال:</strong> P(A) = النتائج المرغوبة / النتائج الممكنة</p>
+                    <p><strong>المتوسط:</strong> متوسط = مجموع القيم / عددها</p>
+                    <p><strong>التكرار النسبي:</strong> (التكرار / الإجمالي) × 100%</p>
+                    <p><strong>احتمال ضرب الأحداث:</strong> P(A و B) = P(A) × P(B)</p>
+                    <p><strong>احتمال جمع الأحداث:</strong> P(A أو B) = P(A) + P(B) - P(A و B)</p>
+                </div>
+
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="fas fa-lightbulb"></i>
+                        نصائح مهمة في الإحصاء والاحتمالات
+                    </div>
+                    <div class="definition-text">
+                        <strong>1. جمع البيانات:</strong> تأكد من صحة وتنظيم البيانات قبل التحليل<br>
+                        <strong>2. حساب الاحتمالات:</strong> دائماً تأكد من أن مجموع الاحتمالات = 1 أو 100%<br>
+                        <strong>3. رسم المخططات:</strong> استخدم مقاييس مناسبة وتسميات واضحة<br>
+                        <strong>4. تفسير النتائج:</strong> اربط الإحصائيات بالواقع العملي<br>
+                        <strong>5. الأدوات:</strong> استخدم الحاسبة والبرامج الإحصائية للدقة<br>
+                        <strong>6. التدريب:</strong> كلما تدربت أكثر، كلما أصبحت أكثر مهارة في الإحصاء
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات من الأساسيات</p>
+                </div>
+                <div class="footer-section">
+                    <h Tخhحh3>روابط الدروس</h3>
+
+                    <h3>روابط الدروس</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="Page1.html">الجمع والطرح</a></li>
+                        <li><a href="Page2.html">المعادلات</a></li>
+                        <li><a href="HomeWork.html">الواجب المنزلي</a></li>
+                        <li><a href="Quiz1.html">الاختبار</a></li>
+                        <li><a href="Problem.html">المسائل الكلامية</a></li>
+                        <li><a href="Analytical.html">الهندسة التحلية</a></li>
+                        <li><a href="Statistics.html">الإحصاء والاحتمالات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>مفاهيم الإحصاء</h3>
+                    <ul>
+                        <li>الاحتمالات والأحداث</li>
+                        <li>الإمكانيات والفرص</li>
+                        <li>المتوسط الحسابي</li>
+                        <li>التكرار والمخططات</li>
+                        <li>البيانات الرقمية</li>
+                        <li>التحليل الإحصائي</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 موقع تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تفاعل بسيط للصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة تأثير للعناصر عند التمرير
+            const elements = document.querySelectorAl
+            const elements = document.querySelectorAll('.concept-section, .example-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+
+            // تنسيق متنقل قابل للطي
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+
+        // رمي النرد التفاعلي
+        function rollDice() {
+            const dice1 = document.getElementById('dice1');
+            const dice2 = document.getElementById('dice2');
+            const result = document.getElementById('diceResult');
+            
+            // رموز النرد
+            const diceSymbols = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+            
+            // توليد أرقام عشوائية
+            const random1 = Math.floor(Math.random() * 6);
+            const random2 = Math.floor(Math.random() * 6);
+            
+            // عرض النتائج
+            dice1.textContent = diceSymbols[random1];
+            dice2.textContent = diceSymbols[random2];
+            
+            const sum = random1 + random2 + 2; // +2 لأن النرد يبدأ من 1
+            const probSum = calculateProbability(sum);
+            
+            result.innerHTML = `
+                <strong>النتيجة:</strong> النرد الأول = ${random1 + 1}، النرد الثاني = ${random2 + 1}<br>
+                <strong>المجموع:</strong> ${sum}<br>
+                <strong>احتمالية هذا المجموع:</strong> ${probSum}%
+            `;
+        }
+
+        function calculateProbability(sum) {
+            const probabilities = {
+                2: '2.78',
+                3: '5.56',
+                4: '8.33',
+                5: '11.11',
+                6: '13.89',
+                7: '16.67',
+                8: '13.89',
+                9: '11.11',
+                10: '8.33',
+                11: '5.56',
+                12: '2.78'
+            };
+            return probabilities[sum] || '0';
+        }
+
+        // تدوير العجلة الدوارة
+        function wheelToSpin() {
+            const spinner = document.querySelector('.wheel-spinner');
+            const result = document.getElementById('wheelResult');
+            
+            // تأثير الدوران
+            spinner.style.transition = 'transform 3s ease-out';
+            spinner.style.transform = 'rotate(' + (360 * 5 + Math.random() * 360) + 'deg)';
+            
+            // تحديد النتيجة بناءً على الدوران
+            setTimeout(() => {
+                const outcomes = ['أحمر', 'أزرق', 'أخضر'];
+                const probabilities = [40, 40, 20];
+                const random = Math.random() * 100;
+                
+                let cumulative = 0;
+                let outcome = '';
+                
+                for (let i = 0; i < probabilities.length; i++) {
+                    cumulative += probabilities[i];
+                    if (random <= cumulative) {
+                        outcome = outcomes[i];
+                        break;
+                    }
+                }
+                
+                result.innerHTML = `
+                    <strong>النتيجة:</strong> ${outcome}<br>
+                    <strong>احتمالية هذا اللون:</strong> ${outcome === 'أخضر' ? '20%' : '40%'}
+                `;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
