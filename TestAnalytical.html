@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الهندسة التحليلية - Analytical Geometry Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --accent-color: #22c55e;
+            --text-color: #1f2937;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .test-container {
+            max-width: 900px;
+            margin: 120px auto 2rem;
+            padding: 0 20px;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .test-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-number {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .question-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            margin: 1rem 0;
+            background: #fafafa;
+            position: relative;
+        }
+
+        .coordinate-demo {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: white;
+        }
+
+        .axis {
+            position: absolute;
+            background: var(--primary-color);
+        }
+
+        .x-axis {
+            width: 100%;
+            height: 2px;
+            bottom: 50%;
+            left: 0;
+        }
+
+        .y-axis {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+        }
+
+        .origin {
+            position: absolute;
+            bottom: 48%;
+            left: 52%;
+            color: var(--secondary-color);
+            font-weight: bold;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: var(--primary-color);
+            background: #f0f4ff;
+        }
+
+        .option.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #dbeafe, #93c5fd);
+        }
+
+        .option.correct {
+            border-color: var(--success-color);
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+        }
+
+        .option.incorrect {
+            border-color: var(--error-color);
+            background: linear-gradient(135deg, #fee2e2, #fca5a5);
+        }
+
+        .option-label {
+            font-weight: bold;
+            margin-left: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0.5rem;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .result-display {
+            background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            display: none;
+        }
+
+        .result-display.show {
+            display: block;
+        }
+
+        .correct-answer {
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .explanation {
+            background: #f8fafc;
+            border-right: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border: 2px solid var(--success-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .score-display.show {
+           .Display: block;
+        }
+
+        .final-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--success-color);
+            margin: 1rem 0;
+        }
+
+        .point-example {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 2px solid white;
+            transform: translate(-50%, -50%);
+        }
+
+        .point-label {
+            position: absolute;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            transform: translate(-50%, -150%);
+        }
+
+        .line-example {
+            position: absolute;
+            height: 3px;
+            background: var(--secondary-color);
+            transform-origin: left center;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .test-container {
+                margin: 100px auto 2rem;
+                padding: 0 15px;
+            }
+
+            .test-title {
+                font-size: 2rem;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .option {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-calculator"></i>
+                <span>تعلم الرياضيات مع يوسف</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="Page1.html">الجمع والطرح</a></li>
+                <li><a href="Page2.html">المعادلات</a></li>
+                <li><a href="HomeWork.html">الواجب</a></li>
+                <li><a href="Quiz1.html">الاختبار</a></li>
+                <li><a href="Problem.html">المسائل</a></li>
+                <li><a href="Analytical.html">الهندسة</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="test-container">
+            <div class="test-header">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <a href="index.html" class="btn btn-secondary" style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">
+                        <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                    </a>
+                    <a href="Analytical.html" class="btn btn-secondary" style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem;">
+                        <i class="fas fa-book"></i> مراجعة الدرس
+                    </a>
+                </div>
+                <h1 class="test-title">
+                    <i class="fas fa-drafting-compass"></i>
+                    اختبار الهندسة التحليلية
+                    <i class="fas fa-chart-line"></i>
+                </h1>
+                <p>اختبر فهمك لمفاهيم الهندسة التحليلية والإحداثيات</p>
+                <p>يحتوي الاختبار على 10 أسئلة متنوعة تغطي جميع المواضيع</p>
+            </div>
+
+            <div class="test-info">
+                <div class="test-details">
+                    <i class="fas fa-clock"></i>
+                    <span>الوقت: 30 دقيقة</span>
+                </div>
+                <div class="test-details">
+                    <i class="fas fa-question-circle"></i>
+                    <span>عدد الأسئلة: 10</span>
+                </div>
+                <div class="test-details">
+                    <i class="fas fa-star"></i>
+                    <span>المستوى: متوسط</span>
+                </div>
+            </div>
+
+            <!-- Question 1: Coordinate System -->
+            <div class="question-card" data-question="1">
+                <span class="question-number">1</span>
+                <div class="question-text">
+                    ما هي إحداثيات نقطة الأصل في نظام الإحداثيات؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'B', 1)">
+                        <span class="option-label">أ)</span> (1,1)
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'B', 1)">
+                        <span class="option-label">ب)</span> (0,0)
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'B', 1)">
+                        <span class="option-label">ج)</span> (0,1)
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'B', 1)">
+                        <span class="option-label">د)</span> (1,0)
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(1, 'ب)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result1">
+                    <div class="correct-answer">الإجابة الصحيحة: (0,0)</div>
+                    <div class="explanation">
+                        نقطة الأصل هي نقطة تقاطع المحور الأفقي والمحور العمودي في نظام الإحداثيات، وإحداثياتها دائماً (0,0).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2: Points -->
+            <div class="question-card" data-question="2">
+                <span class="question-number">2</span>
+                <div class="question-text">
+                    إذا كانت النقطة A تقع عند الإحداثيات (3,4)، ففي أي ربع تقع؟
+                </div>
+                <div class="question-image">
+                    <div class="coordinate-demo">
+                        <div class="axis x-axis"></div>
+                        <div class="axis y-axis"></div>
+                        <div class="origin">O</div>
+                        <div class="point-example" style="bottom: calc(50% + 100px); left: calc(50% + 120px);"></div>
+                        <div class="point-label" style="bottom: calc(50% + 100px); left: calc(50% + 120px);">A(3,4)</div>
+                    </div>
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'أ', 2)">
+                        <span class="option-label">أ)</span> الربع الأول
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'أ', 2)">
+                        <span class="option-label">ب)</span> الربع الثاني
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'أ', 2)">
+                        <span class="option-label">ج)</span> الربع الثالث
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'أ', 2)">
+                        <span class="option-label">د)</span> الربع الرابع
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(2, 'أ)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result2">
+                    <div class="correct-answer">الإجابة الصحيحة: الربع الأول</div>
+                    <div class="explanation">
+                        النقطة (3,4) لها إحداثيات موجبة في كلا الاتجاهين، لذلك تقع في الربع الأول.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3: Distance -->
+            <div class="question-card" data-question="3">
+                <span class="question-number">3</span>
+                <div class="question-text">
+                    ما هي المسافة الأفقية بين النقطتين A(2,3) و B(7,3)؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'ج', 3)">
+                        <span class="option-label">أ)</span> 3 وحدات
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 3)">
+                        <span class="option-label">ب)</span> 4 وحدات
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 3)">
+                        <span class="option-label">ج)</span> 5 وحدات
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 3)">
+                        <span class="option-label">د)</span> 6 وحدات
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(3, 'ج)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result3">
+                    <div class="correct-answer">الإجابة الصحيحة: 5 وحدات</div>
+                    <div class="explanation">
+                        المسافة الأفقية = |x2 - x1| = |7 - 2| = 5 وحدات
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4: Line Equation -->
+            <div class="question-card" data-question="4">
+                <span class="question-number">4</span>
+                <div class="question-text">
+                    ما هو الميل في المعادلة الخطية y = 3x + 2؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'ب', 4)">
+                        <span class="option-label">أ)</span> 2
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ب', 4)">
+                        <span class="option-label">ب)</span> 3
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ب', 4)">
+                        <span class="option-label">ج)</span> 5
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ب', 4)">
+                        <span class="option-label">د)</span> 1
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(4, 'ب)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result4">
+                    <div class="correct-answer">الإجابة الصحيحة: 3</div>
+                    <div class="explanation">
+                        في معادلة الخط المستقيم y = mx + b، فإن m هو الميل والذي يساوي 3 في هذه المعادلة.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5: Triangle Area -->
+            <div class="question-card" data-question="5">
+                <span class="question-number">5</span>
+                <div class="question-text">
+                    ما هي مساحة المثلث الذي رؤوسه A(0,0)، B(0,6)، C(4,0)؟
+                </div>
+                <div class="question-image">
+                    <div class="coordinate-demo">
+                        <div class="axis x-axis"></div>
+                        <div class="axis y-axis"></div>
+                        <div class="origin">O</div>
+                        <!-- Triangle vertices -->
+                        <div class="point-example" style="bottom: calc(50% + 120px); left: calc(50% - 80px);"></div>
+                        <div class="point-label" style="bottom: calc(50% + 120px); left: calc(50% - 80px);">B(0,6)</div>
+                        <div class="point-example" style="bottom: calc(50% - 80px); left: calc(50% + 80px);"></div>
+                        <div class="point-label" style="bottom: calc(50% - 80px); left: calc(50% + 80px);">C(4,0)</div>
+                        <div class="point-example" style="bottom: calc(50% + 1px); left: calc(50% + 1px);"></div>
+                        <div class="point-label" style="bottom: calc(50% + 1px); left: calc(50% + 1px);">A(0,0)</div>
+                        <!-- Triangle sides -->
+                        <div class="line-example" style="bottom: calc(50% - 78px); left: calc(50% - 78px); width: 160px; transform: rotate(0deg);"></div>
+                        <div class="line-example" style="bottom: calc(50% - 78px); left: calc(50% + 2px); width: 120px; transform: rotate(90deg);"></div>
+                        <div class="line-example" style="bottom: calc(50% + 2px); left: calc(50% - 78px); width: 160px; transform: rotate(37deg); background: var(--accent-color);"></div>
+                    </div>
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'ج', 5)">
+                        <span class="option-label">أ)</span> 8 وحدات مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 5)">
+                        <span class="option-label">ب)</span> 10 وحدات مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 5)">
+                        <span class="option-label">ج)</span> 12 وحدة مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 5)">
+                        <span class="option-label">د)</span> 24 وحدة مربعة
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(5, 'ج)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result5">
+                    <div class="correct-answer">الإجابة الصحيحة: 12 وحدة مربعة</div>
+                    <div class="explanation">
+                        مساحة المثلث = ½ × القاعدة × الارتفاع = ½ × 4 × 6 = 12 وحدة مربعة
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6: Rectangle Area -->
+            <div class="question-card" data-question="6">
+                <span class="question-number">6</span>
+                <div class="question-text">
+                    ما هي مساحة المستطيل الذي رؤوسه A(1,1)، B(5,1)، C(5,4)، D(1,4)؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'ج', 6)">
+                        <span class="option-label">أ)</span> 10 وحدات مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 6)">
+                        <span class="option-label">ب)</span> 11 وحدة مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 6)">
+                        <span class="option-label">ج)</span> 12 وحدة مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 6)">
+                        <span class="option-label">د)</span> 15 وحدة مربعة
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(6, 'ج)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result6">
+                    <div class="correct-answer">الإجابة الصحيحة: 12 وحدة مربعة</div>
+                    <div class="explanation">
+                        الطول = |5 - 1| = 4، العرض = |4 - 1| = 3، المساحة = 4 × 3 = 12 وحدة مربعة
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7: Vertical Distance -->
+            <div class="question-card" data-question="7">
+                <span class="question-number">7</span>
+                <div class="question-text">
+                    ما هي المسافة العمودية بين النقطتين P(2,3) و Q(2,8)؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'ج', 7)">
+                        <span class="option-label">أ)</span> 3 وحدات
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 7)">
+                        <span class="option-label">ب)</span> 4 وحدات
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 7)">
+                        <span class="option-label">ج)</span> 5 واردة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ج', 7)">
+                        <span class="option-label">د)</span> 6 وحدات
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(7, 'ج)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result7">
+                    <div class="correct-answer">الإجابة الصحيحة: 5 وحدات</div>
+                    <div class="explanation">
+                        المسافة العمودية = |y2 - y1| = |8 - 3| = 5 وحدات
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8: Slope Direction -->
+            <div class="question-card" data-question="8">
+                <span class="question-number">8</span>
+                <div class="question-text">
+                    إذا كان ميل الخط المستقيم سالباً، فكيف يبدو الخط؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'ب', 8)">
+                        <span class="option-label">أ)</span> أتخذي
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ب', 8)">
+                        <span class="option-label">ب)</span> هابتن
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ب', 8)">
+                        <span class="option-label">ج)</span> أفقي
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'ب', 8)">
+                        <span class="option-label">د)</span> عمودي
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(8, 'ب)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result8">
+                    <div class="correct-answer">الإجابة الصحيحة: هابط</div>
+                    <div class="explanation">
+                        الميل السالب يعني أن الخط هابط من اليسار إلى اليمين.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9: Input Answer -->
+            <div class="question-card" data-question="9">
+                <span class="question-number">9</span>
+                <div class="question-text">
+                    أكتب معادلة الخط المستقيم الذي تقاطع مع المحور العمودي عند النقطة (0,5) وميله 2:
+                </div>
+                <input type="text" class="answer-input" id="answer9" placeholder="اكتب المعادلة بالشكل y = mx + b">
+                <button class="check-btn" onclick="checkInputAnswer(9, 'y = 2x + 5')">تحقق من الإجابة</button>
+                <div class="result-display" id="result9">
+                    <div class="correct-answer">الإجابة الصحيحة: y = 2x + 5</div>
+                    <div class="explanation">
+                        إذا كان الميل = 2، والتقاطع مع المحور Y عند (0,5)، فإن المعادلة هي y = 2x + 5
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10: Square Area -->
+            <div class="question-card" data-question="10">
+                <span class="question-number">10</span>
+                <div class="question-text">
+                    ما هي مساحة المربع الذي طول ضلعه 6 وحدات؟
+                </div>
+                <div class="answer-options">
+                    <div class="option" onclick="selectOption(this, 'د', 10)">
+                        <span class="option-label">أ)</span> 12 وحدة مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'د', 10)">
+                        <span class="option-label">ب)</span> 18 وحدة مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'د', 10)">
+                        <span class="option-label">ج)</span> 24 وحدة مربعة
+                    </div>
+                    <div class="option" onclick="selectOption(this, 'د', 10)">
+                        <span class="option-label">د)</span> 36 وحدة مربعة
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(10, 'د)')">تحقق من الإجابة</button>
+                <div class="result-display" id="result10">
+                    <div class="correct-answer">الإجابة الصحيحة: 36 وحدة مربعة</div>
+                    <div class="explanation">
+                        مساحة المربع = الضلع² = 6² = 36 وحدة مربعة
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="submit-btn" onclick="calculateScore()">احسب النتيجة النهائية</button>
+            </div>
+
+            <div class="score-display" id="finalScore">
+                <h2>🎉 نتائج الاختبار 🎉</h2>
+                <div class="final-score" id="scoreValue">0/10</div>
+                <p id="scoreMessage">رسالة النتيجة ستظهر هنا</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>تعلم الرياضيات مع يوسف</h3>
+                    <p>منصة تعليمية شاملة لتعلم الرياضيات من الأساسيات</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط الاختبارات</h3>
+                    <ul>
+                        <li><a href="Quiz1.html">اختبار الجمع والطرح</a></li>
+                        <li><a href="Problem.html">اختبار المسائل</a></li>
+                        <li><a href="TestAnalytical.html">اختبار الهندسة التحليلية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>مفاهيم الهندسة التحليلية</h3>
+                    <ul>
+                        <li>نظام الإحداثيات</li>
+                        <li>النقاط والخطوط</li>
+                        <li>حساب المسافات</li>
+                        <li>مساحات الأشكال</li>
+                        <li>الدوال الخطية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 موقع تعلم الرياضيات مع يوسف. جميع الحقوق محفوظة.</p>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        let userAnswers = {};
+        let correctAnswers = ['ب)', 'أ)', 'ج)', 'ب)', 'ج)', 'ج)', 'ج)', 'ب)', 'y = 2x + 5', 'د)'];
+
+        function selectOption(element, answer, questionNumber) {
+            // Remove selected class from all options in this question
+            const questionCard = element.closest('.question-card');
+            const options = questionCard.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Store the answer
+            userAnswers[questionNumber] = answer;
+        }
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const resultDiv = document.getElementById(`result${questionNumber}`);
+            const options = document.querySelectorAll(`[data-question="${questionNumber}"] .option`);
+            
+            let userAnswer = '';
+            options.forEach(option => {
+                if (option.classList.contains('selected')) {
+                    const optionText = option.textContent.trim();
+                    if (optionText.includes('أ)')) userAnswer = 'أ)';
+                    else if (optionText.includes('ب)')) userAnswer = 'ب)';
+                    else if (optionText.includes('ج)')) userAnswer = 'ج)';
+                    else if (optionText.includes('د)')) userAnswer = 'د)';
+                }
+            });
+
+            // Mark correct and incorrect answers
+            options.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+                if (option.textContent.includes(correctAnswer)) {
+                    option.classList.add('correct');
+                }
+                if (option.textContent.includes(userAnswer) && userAnswer !== correctAnswer) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            resultDiv.classList.add('show');
+        }
+
+        function checkInputAnswer(questionNumber, correctAnswer) {
+            const userInput = document.getElementById(`answer${questionNumber}`).value.trim();
+            const resultDiv = document.getElementById(`result${questionNumber}`);
+            
+            if (userInput.toLowerCase() === correctAnswer.toLowerCase()) {
+                alert('إجابة صحيحة! 🎉');
+                resultDiv.querySelector('.correct-answer').style.color = 'var(--success-color)';
+            } else {
+                alert('إجابة خاطئة، حاول مرة أخرى');
+                resultDiv.querySelector('.correct-answer').style.color = 'var(--error-color)';
+            }
+            resultDiv.classList.add('show');
+        }
+
+        function calculateScore() {
+            let score = 0;
+            let totalQuestions = 10;
+
+            // Check multiple choice answers
+            for (let i = 1; i <= 8; i++) {
+                const options = document.querySelectorAll(`[data-question="${i}"] .option`);
+                let userAnswer = '';
+                let hasSelected = false;
+                
+                options.forEach(option => {
+                    if (option.classList.contains('selected')) {
+                        hasSelected = true;
+                        const optionText = option.textContent.trim();
+                        if (optionText.includes('أ)')) userAnswer = 'أ)';
+                        else if (optionText.includes('ب)')) userAnswer = 'ب)';
+                        else if (optionText.includes('ج)')) userAnswer = 'ج)';
+                        else if (optionText.includes('د)')) userAnswer = 'د)';
+                    }
+                });
+
+                if (!hasSelected) {
+                    alert(`يرجى الإجابة على السؤال رقم ${i} أولاً`);
+                    return;
+                }
+
+                if (userAnswer === correctAnswers[i-1]) {
+                    score++;
+                }
+            }
+
+            // Check question 9 (input answer)
+            const input9 = document.getElementById('answer9').value.trim();
+            if (input9 === '') {
+                alert('يرجى الإجابة على السؤال رقم 9 أولاً');
+                return;
+            }
+            if (input9.toLowerCase() === correctAnswers[8].toLowerCase()) {
+                score++;
+            }
+
+            // Check question 10 (last multiple choice)
+            const options10 = document.querySelectorAll(`[data-question="10"] .option`);
+            let userAnswer10 = '';
+            let hasSelected10 = false;
+            
+            options10.forEach(option) => {
+                if (option.classList.contains('selected')) {
+                    hasSelected10 = true;
+                    const optionText = option.textContent.trim();
+                    if (optionText.includes('أ)')) userAnswer10 = 'أ)';
+                    else if (optionText.includes('ب)')) userAnswer10 = 'ب)';
+                    else if (optionText.includes('ج)')) userAnswer10 = 'ج)';
+                    else if (optionText.includes('د)')) userAnswer10 = 'د)';
+                }
+            });
+
+            if (!hasSelected10) {
+                alert('يرجى الإجابة على السؤال رقم 10 أولاً');
+                return;
+            }
+
+            if (userAnswer10 === correctAnswers[9]) {
+                score++;
+            }
+
+            // Display results
+            const scoreDisplay = document.getElementById('finalScore');
+            const scoreValue = document.getElementById('scoreValue');
+            const scoreMessage = document.getElementById('scoreMessage');
+
+            scoreValue.textContent = `${score}/${totalQuestions}`;
+            
+            if (score === totalQuestions) {
+                scoreMessage.innerHTML = '🎉 ممتاز! لقد أحرزت الدرجة الكاملة!';
+            } else if (score >= 8) {
+                scoreMessage.innerHTML = '👍 جيد جداً! أداء ممتاز';
+            } else if (score >= 6) {
+                scoreMessage.innerHTML = '📚 جيد، راجع المادة وتدرب أكثر';
+            } else {
+                scoreMessage.innerHTML = '📖 تحتاج لمراجعة المادة وتدريب أكثر';
+            }
+
+            scoreDisplay.classList.add('show');
+            
+            // Scroll to results
+            scoreDisplay.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Initialize elements
+            const elements = document.querySelectorAll('.question-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
